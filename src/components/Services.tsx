@@ -1,56 +1,70 @@
-import { GraduationCap, Briefcase, TrendingUp, Users } from 'lucide-react';
+import { GraduationCap, FileCheck, School, BookOpen, BadgeDollarSign, MapPin } from 'lucide-react';
 
 export default function Services() {
   const services = [
     {
       icon: GraduationCap,
-      title: 'Student Counselling',
-      description: 'Help students choose the right educational path and career direction based on their interests and abilities.',
+      title: 'Career Counselling',
+      description: 'Personalised guidance to help students identify the right career path aligned with their strengths, interests, and global opportunities.',
       image: 'https://images.pexels.com/photos/5212317/pexels-photo-5212317.jpeg?auto=compress&cs=tinysrgb&w=800',
-      color: 'from-blue-500 to-blue-600',
+      color: 'from-brand-navy to-brand-navy-800',
     },
     {
-      icon: Briefcase,
-      title: 'Professional Development',
-      description: 'Career transition guidance for working professionals looking to advance or pivot in their careers.',
+      icon: FileCheck,
+      title: 'Visa Assistance',
+      description: 'End-to-end support for student visa applications — documentation, interview prep, and embassy guidance for every country.',
       image: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800',
-      color: 'from-teal-500 to-teal-600',
+      color: 'from-brand-gold to-brand-gold-dark',
     },
     {
-      icon: TrendingUp,
-      title: 'Career Coaching',
-      description: 'One-on-one coaching sessions to develop leadership skills, interview preparation, and career strategies.',
+      icon: School,
+      title: 'University Selection',
+      description: 'Expert shortlisting of universities that match your academic profile, budget, and career goals across 10 global destinations.',
       image: 'https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=800',
-      color: 'from-blue-600 to-teal-600',
+      color: 'from-brand-navy to-brand-gold',
     },
     {
-      icon: Users,
-      title: 'Corporate Training',
-      description: 'Customized training programs for organizations to enhance employee skills and career development.',
+      icon: BookOpen,
+      title: 'Course Selection',
+      description: 'In-depth advice on choosing the right programme, specialisation, and intake to maximise your career prospects abroad.',
       image: 'https://images.pexels.com/photos/3182759/pexels-photo-3182759.jpeg?auto=compress&cs=tinysrgb&w=800',
-      color: 'from-teal-600 to-blue-600',
+      color: 'from-brand-gold to-brand-navy',
+    },
+    {
+      icon: BadgeDollarSign,
+      title: 'Education Loan Support',
+      description: 'Guidance on securing education loans, scholarships, and financial aid options so funding never stands between your dream.',
+      image: 'https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg?auto=compress&cs=tinysrgb&w=800',
+      color: 'from-brand-navy to-brand-gold-dark',
+    },
+    {
+      icon: MapPin,
+      title: 'Pre-Departure Orientation',
+      description: 'Comprehensive briefings on accommodation, banking, culture, and campus life so you arrive confident and fully prepared.',
+      image: 'https://images.pexels.com/photos/4491461/pexels-photo-4491461.jpeg?auto=compress&cs=tinysrgb&w=800',
+      color: 'from-brand-gold-dark to-brand-navy',
     },
   ];
 
   return (
-    <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+    <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-brand-cream to-white">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <span className="px-4 py-2 bg-teal-100 text-teal-700 rounded-full text-sm font-semibold inline-block mb-4">
+          <span className="px-4 py-2 bg-brand-gold/15 text-brand-gold-dark rounded-full text-sm font-semibold inline-block mb-4 tracking-wide">
             Our Services
           </span>
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-brand-navy mb-4">
             Tailored Solutions for
-            <span className="block mt-2 bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">
+            <span className="block mt-2 bg-gradient-to-r from-brand-navy to-brand-gold bg-clip-text text-transparent">
               Every Career Stage
             </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-brand-gray max-w-2xl mx-auto">
             From students to professionals, we provide expert guidance at every step
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <div
               key={index}
@@ -62,7 +76,7 @@ export default function Services() {
                   alt={service.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/50 to-transparent"></div>
               </div>
 
               <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
@@ -70,7 +84,7 @@ export default function Services() {
                   <service.icon className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
-                <p className="text-gray-200 leading-relaxed">{service.description}</p>
+                <p className="text-brand-light leading-relaxed">{service.description}</p>
               </div>
             </div>
           ))}
