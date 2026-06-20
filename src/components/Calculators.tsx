@@ -1,4 +1,4 @@
-import { DollarSign, TrendingUp } from 'lucide-react';
+import { DollarSign, TrendingUp, ChevronDown } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { LIVING_COSTS, REGIONS } from '../constants/regions';
 
@@ -17,7 +17,7 @@ const FALLBACK_RATES: Record<string, number> = {
 };
 
 export default function Calculators() {
-  const [livingCostCountry, setLivingCostCountry] = useState('Korea');
+  const [livingCostCountry, setLivingCostCountry] = useState('South Korea');
   const [livingCostMonths, setLivingCostMonths] = useState(1);
 
   const [forexFrom, setForexFrom] = useState('USD');
@@ -75,17 +75,20 @@ export default function Calculators() {
                 <label className="block text-sm font-semibold text-gray-700 mb-3">
                   Select Country
                 </label>
-                <select
-                  value={livingCostCountry}
-                  onChange={(e) => setLivingCostCountry(e.target.value)}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-brand-gold focus:outline-none font-medium text-gray-900 bg-white"
-                >
-                  {regionNames.map((country) => (
-                    <option key={country} value={country}>
-                      {country}
-                    </option>
-                  ))}
-                </select>
+                <div className="relative">
+                  <select
+                    value={livingCostCountry}
+                    onChange={(e) => setLivingCostCountry(e.target.value)}
+                    className="w-full pl-4 pr-10 py-3 border-2 border-gray-200 rounded-lg focus:border-brand-gold focus:outline-none font-medium text-gray-900 bg-white appearance-none"
+                  >
+                    {regionNames.map((country) => (
+                      <option key={country} value={country}>
+                        {country}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                </div>
               </div>
 
               <div>
@@ -165,34 +168,40 @@ export default function Calculators() {
                   <label className="block text-sm font-semibold text-gray-700 mb-3">
                     From
                   </label>
-                  <select
-                    value={forexFrom}
-                    onChange={(e) => setForexFrom(e.target.value)}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-brand-gold focus:outline-none font-medium text-gray-900 bg-white"
-                  >
-                    {Object.keys(CURRENCY_META).map((currency) => (
-                      <option key={currency} value={currency}>
-                        {currency}
-                      </option>
-                    ))}
-                  </select>
+                  <div className="relative">
+                    <select
+                      value={forexFrom}
+                      onChange={(e) => setForexFrom(e.target.value)}
+                      className="w-full pl-4 pr-10 py-3 border-2 border-gray-200 rounded-lg focus:border-brand-gold focus:outline-none font-medium text-gray-900 bg-white appearance-none"
+                    >
+                      {Object.keys(CURRENCY_META).map((currency) => (
+                        <option key={currency} value={currency}>
+                          {currency}
+                        </option>
+                      ))}
+                    </select>
+                    <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                  </div>
                 </div>
 
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-3">
                     To
                   </label>
-                  <select
-                    value={forexTo}
-                    onChange={(e) => setForexTo(e.target.value)}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-brand-gold focus:outline-none font-medium text-gray-900 bg-white"
-                  >
-                    {Object.keys(CURRENCY_META).map((currency) => (
-                      <option key={currency} value={currency}>
-                        {currency}
-                      </option>
-                    ))}
-                  </select>
+                  <div className="relative">
+                    <select
+                      value={forexTo}
+                      onChange={(e) => setForexTo(e.target.value)}
+                      className="w-full pl-4 pr-10 py-3 border-2 border-gray-200 rounded-lg focus:border-brand-gold focus:outline-none font-medium text-gray-900 bg-white appearance-none"
+                    >
+                      {Object.keys(CURRENCY_META).map((currency) => (
+                        <option key={currency} value={currency}>
+                          {currency}
+                        </option>
+                      ))}
+                    </select>
+                    <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                  </div>
                 </div>
               </div>
 

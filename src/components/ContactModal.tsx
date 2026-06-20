@@ -226,6 +226,22 @@ export default function ContactModal({ isOpen, onClose }: Props) {
                   </button>
                   {isServiceOpen && (
                     <div className="absolute z-20 left-0 right-0 mt-1 bg-white border-2 border-brand-gold rounded-lg shadow-lg overflow-hidden">
+                      {/* Select All row */}
+                      <label className="flex items-center space-x-3 px-4 py-2.5 hover:bg-brand-cream cursor-pointer transition-colors border-b border-brand-light">
+                        <input
+                          type="checkbox"
+                          checked={form.services.length === SERVICES.length}
+                          ref={(el) => { if (el) el.indeterminate = form.services.length > 0 && form.services.length < SERVICES.length; }}
+                          onChange={() =>
+                            setForm((f) => ({
+                              ...f,
+                              services: f.services.length === SERVICES.length ? [] : [...SERVICES],
+                            }))
+                          }
+                          className="w-4 h-4 accent-brand-gold rounded"
+                        />
+                        <span className="text-sm font-semibold text-brand-navy">Select All</span>
+                      </label>
                       {SERVICES.map((s) => {
                         const checked = form.services.includes(s);
                         return (

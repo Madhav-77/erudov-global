@@ -87,7 +87,7 @@ function FAQAccordion({ faqs }: { faqs: { question: string; answer: string }[] }
 export default function RegionDetail({ regionCode = 'KR' }: RegionDetailProps) {
   const [activeTab, setActiveTab] = useState('overview');
   const region = REGIONS.find(r => r.code === regionCode);
-  const details = REGION_DETAILS[region?.name || 'Korea'];
+  const details = REGION_DETAILS[region?.name || 'South Korea'];
   const rich = region ? REGION_RICH_CONTENT[region.name] : undefined;
 
   if (!region || !details) {
@@ -413,7 +413,7 @@ export default function RegionDetail({ regionCode = 'KR' }: RegionDetailProps) {
                 </div>
               )}
 
-              {/* Language */}
+              {/* Language (Korea comment removed) */}
               {rich.language && (
                 <div className="max-w-3xl">
                   <SectionLabel>Language</SectionLabel>
