@@ -8,20 +8,22 @@ export const REGIONS = [
   { name: 'Ireland', code: 'IE', flag: '🇮🇪' },
   { name: 'Slovakia', code: 'SK', flag: '🇸🇰' },
   { name: 'Singapore', code: 'SG', flag: '🇸🇬' },
-  { name: 'Hungary', code: 'HU', flag: '🇭🇺' }
+  { name: 'Hungary', code: 'HU', flag: '🇭🇺' },
+  { name: 'UAE', code: 'AE', flag: '🇦🇪' }
 ];
 
 export const LIVING_COSTS: Record<string, number> = {
   'South Korea': 1200,
-  'UK': 1500,
-  'Germany': 1300,
-  'France': 1350,
-  'Italy': 1150,
-  'Japan': 1400,
-  'Ireland': 1600,
-  'Slovakia': 900,
-  'Singapore': 1400,
-  'Hungary': 650
+  'UK': 1600,
+  'Germany': 1100,
+  'France': 1300,
+  'Italy': 1100,
+  'Japan': 1300,
+  'Ireland': 1700,
+  'Slovakia': 800,
+  'Singapore': 1800,
+  'Hungary': 850,
+  'UAE': 1400
 };
 
 export const REGION_DETAILS: Record<string, RegionDetail> = {
@@ -73,7 +75,7 @@ export const REGION_DETAILS: Record<string, RegionDetail> = {
       'Healthcare',
       'Creative Industries'
     ],
-    livingCostPerMonth: 1500,
+    livingCostPerMonth: 1600,
     visaType: 'Student Visa (Tier 4)',
     applicationDeadline: 'January & September',
     populationOfStudents: '20,000+',
@@ -100,7 +102,7 @@ export const REGION_DETAILS: Record<string, RegionDetail> = {
       'Manufacturing',
       'Technology'
     ],
-    livingCostPerMonth: 1300,
+    livingCostPerMonth: 1100,
     visaType: 'Student Visa (Schengen)',
     applicationDeadline: 'April & October',
     populationOfStudents: '18,000+',
@@ -127,7 +129,7 @@ export const REGION_DETAILS: Record<string, RegionDetail> = {
       'Wine & Hospitality',
       'Aerospace'
     ],
-    livingCostPerMonth: 1350,
+    livingCostPerMonth: 1300,
     visaType: 'Student Visa (Schengen)',
     applicationDeadline: 'March & September',
     populationOfStudents: '17,000+',
@@ -154,7 +156,7 @@ export const REGION_DETAILS: Record<string, RegionDetail> = {
       'Food & Wine',
       'Tourism'
     ],
-    livingCostPerMonth: 1150,
+    livingCostPerMonth: 1100,
     visaType: 'Student Visa (Schengen)',
     applicationDeadline: 'April & October',
     populationOfStudents: '13,000+',
@@ -181,7 +183,7 @@ export const REGION_DETAILS: Record<string, RegionDetail> = {
       'Software Development',
       'Pharmaceuticals'
     ],
-    livingCostPerMonth: 1400,
+    livingCostPerMonth: 1300,
     visaType: 'Student Visa (Ryugaku)',
     applicationDeadline: 'May & November',
     populationOfStudents: '16,000+',
@@ -208,7 +210,7 @@ export const REGION_DETAILS: Record<string, RegionDetail> = {
       'Financial Services',
       'Agriculture'
     ],
-    livingCostPerMonth: 1600,
+    livingCostPerMonth: 1700,
     visaType: 'Student Visa (Critical Skills)',
     applicationDeadline: 'January & July',
     populationOfStudents: '19,000+',
@@ -235,7 +237,7 @@ export const REGION_DETAILS: Record<string, RegionDetail> = {
       'Energy',
       'Tourism'
     ],
-    livingCostPerMonth: 900,
+    livingCostPerMonth: 800,
     visaType: 'Student Visa (Schengen)',
     applicationDeadline: 'March & September',
     populationOfStudents: '8,000+',
@@ -262,7 +264,7 @@ export const REGION_DETAILS: Record<string, RegionDetail> = {
       'Petrochemicals',
       'Trade & Logistics'
     ],
-    livingCostPerMonth: 1400,
+    livingCostPerMonth: 1800,
     visaType: 'Student Pass',
     applicationDeadline: 'January & August',
     populationOfStudents: '12,000+',
@@ -289,11 +291,38 @@ export const REGION_DETAILS: Record<string, RegionDetail> = {
       'Technology & IT',
       'Finance & Business Services'
     ],
-    livingCostPerMonth: 650,
+    livingCostPerMonth: 850,
     visaType: 'Type D Long-Stay Study Visa',
     applicationDeadline: 'January (Stipendium) & Rolling',
     populationOfStudents: '10,000+',
     counselorsAvailable: 8
+  },
+  'UAE': {
+    name: 'UAE',
+    code: 'AE',
+    flag: '🇦🇪',
+    description: 'Zero income tax, 4.36M Indians, Golden Visa for top graduates, and a 3-hour flight from Mumbai — the study abroad decision most Indian families haven\'t made yet',
+    capital: 'Abu Dhabi',
+    languages: ['Arabic', 'English'],
+    currency: 'AED (د.إ)',
+    timezone: 'GST (UTC+4)',
+    universities: [
+      'Khalifa University',
+      'MBZUAI',
+      'UAE University (UAEU)',
+      'American University of Sharjah'
+    ],
+    industries: [
+      'Finance & Banking',
+      'Technology & AI',
+      'Energy & Petrochemicals',
+      'Tourism & Hospitality'
+    ],
+    livingCostPerMonth: 1400,
+    visaType: 'UAE Student Residence Visa',
+    applicationDeadline: 'Rolling (September & January main intakes)',
+    populationOfStudents: '185,000+',
+    counselorsAvailable: 10
   }
 };
 
@@ -1694,6 +1723,148 @@ export const REGION_RICH_CONTENT: Record<string, RegionRichContent> = {
       ],
       callout: 'Practical advice: The Hungarian Cultural Centre in New Delhi offers Hungarian language courses. The Duolingo Hungarian course is a reasonable starting point for basics before departure. Hungarian is a complex language but the alphabet is Latin-based and phonetic — reading signage and menus comes quickly even without spoken fluency, and most students pick up sufficient daily conversational Hungarian through immersion within the first year.',
     },
+  },
+
+  // ─── UAE ─────────────────────────────────────────────────────────────────────
+  UAE: {
+    heroTagline: 'Three hours from Mumbai, zero income tax, a massive Indian community, and the world\'s most unique long-term residency offer for graduates. The UAE is no longer just a stopover city — it is one of the smartest study decisions an Indian student can make in 2026.',
+    quickStats: [
+      { value: '₹9L–18L', label: 'Tuition per year' },
+      { value: '4.36M', label: 'Indians living in UAE' },
+      { value: '0%', label: 'Income tax' },
+      { value: '10 yrs', label: 'Golden Visa for top graduates' },
+    ],
+    whyTitle: 'The destination most Indian families haven\'t considered — but should',
+    whyParagraphs: [
+      'There is a version of the study abroad decision that most Indian families have not thought through properly. The US, UK, Canada, and Australia dominate the conversation — but each of those countries is either tightening its immigration rules, raising its costs, or reducing its post-study work rights. The UAE has been doing the opposite. In 2024–25, the number of Indian students choosing the UAE jumped by 67%. Over 1.85 lakh Indian students are now studying there. The reasons are straightforward once you look at them clearly.',
+      'The most obvious one is proximity. A flight from Mumbai or Delhi to Dubai takes three to four hours. Your family can visit for a long weekend. If something happens at home, you can be back the same day. No other serious study destination — not the UK, not Germany, not Australia — comes close on this. For Indian families where the emotional weight of sending a child abroad is real, this changes the calculation entirely.',
+      'Then there is the tax question. The UAE has zero personal income tax. A student earning AED 5,000 per month from a part-time job keeps every dirham of it. A graduate earning AED 12,000 per month in their first job takes home the same. In the UK, Australia, or Canada, 20–30% of that would go to the government. Over a career, this compounds significantly. The UAE is also home to 4.36 million Indians — the largest expat community in the country, making up roughly 30% of the total population. In Dubai and Abu Dhabi, Hindi, Gujarati, Malayalam, and Tamil are heard everywhere. The adjustment period that can define the first semester abroad for students going to the UK or Australia barely exists here.',
+    ],
+    whyCallout: 'What the India–UAE Mobility Pact (January 2026) changes: A landmark agreement between the two governments introduced 48-hour fast-track student visa processing for Indian applicants, mutual recognition of academic credits, and new sandwich degree formats that allow students to split their course between an Indian institution and a UAE university. It is the most significant policy shift between the two countries on education in a decade.',
+    whyCalloutType: 'gold',
+    universitiesIntro: "The UAE's higher education landscape is divided into two broad types. Government-funded research universities — Khalifa University, MBZUAI, UAE University — operate at international standards and offer heavily subsidised or fully funded education. International branch campuses — Heriot-Watt Dubai, University of Birmingham Dubai — offer UK or Australian degrees at a UAE location. Understanding this distinction matters, because the cost, culture, and career pathway from each type are very different.",
+    universitiesDetailed: [
+      {
+        rank: 'QS #170 Globally (2026)',
+        name: 'Khalifa University',
+        location: 'Abu Dhabi — Government research university',
+        description: "Abu Dhabi's flagship STEM research institution and one of the fastest-rising universities in the world. Khalifa focuses entirely on science, engineering, and technology — aerospace, petroleum engineering, AI, cybersecurity, sustainable energy. The research funding is extraordinary: the university has direct pipelines to ADNOC, Mubadala, Etihad, and major UAE government entities. Almost all admitted international postgraduate students receive a full scholarship including tuition, monthly stipend, flights, and visa — no separate scholarship application is required. If you are a strong STEM student, Khalifa should be the first name on your list.",
+        tags: ['Full scholarship standard', 'STEM & engineering', 'Abu Dhabi industry links'],
+        fees: '₹0 with scholarship + AED 4,000–20,000/month stipend',
+        featured: true,
+      },
+      {
+        rank: 'World\'s Top AI University',
+        name: 'MBZUAI',
+        location: 'Abu Dhabi — Mohamed bin Zayed University of AI',
+        description: "One of the most unusual universities in the world — it offers only master's and PhD programs in Artificial Intelligence, and every single admitted student gets a full scholarship, automatically. No separate application required — if you are admitted, you are funded. The stipend is AED 15,500 per month for master's students and AED 17,500 for PhD students, which is among the highest graduate stipends anywhere in the world. MBZUAI's faculty and research infrastructure are genuinely world-class — NVIDIA supercomputing facilities, partnerships with leading AI labs globally, and direct access to the UAE's booming AI industry. For Indian students with a strong background in CS, mathematics, or engineering targeting a career in AI, this is arguably the best-value option on earth right now.",
+        tags: ['100% of students funded', 'AI & machine learning only', 'AED 15,500–17,500/month stipend'],
+        fees: '₹0 — all students fully funded',
+        featured: true,
+      },
+      {
+        rank: 'QS #229 Globally (2026)',
+        name: 'UAE University (UAEU)',
+        location: 'Al Ain — UAE\'s oldest and largest national university',
+        description: "The UAE's oldest national university, founded in 1976, and one of the most research-active in the region. UAEU is a comprehensive institution covering engineering, business, science, humanities, and medicine. Graduate assistantships are available in most departments — these combine partial tuition coverage with a monthly stipend in exchange for teaching or research assistance. Al Ain is quieter and considerably more affordable than Dubai or Abu Dhabi, making UAEU one of the most cost-effective choices for a serious research degree in the UAE.",
+        tags: ['Graduate assistantships', 'All disciplines', 'Most affordable major UAE university'],
+        fees: 'AED 40,000–75,000/year (₹10L–19L)',
+      },
+      {
+        rank: 'QS #272 Globally (2026)',
+        name: 'American University of Sharjah',
+        location: 'Sharjah — accredited US-style comprehensive university',
+        description: "The strongest all-round private university in the UAE for Indian students who want a US-style academic experience without US prices. AUS is accredited by the Middle States Commission on Higher Education (USA) — the same body that accredits NYU and Georgetown — which means its degree carries genuine US recognition. Strong across architecture, engineering, business, and the humanities. Sharjah is cheaper to live in than Dubai while remaining minutes from the city. Scholarships here are merit-based and cover 25–100% of tuition depending on academic profile.",
+        tags: ['US accreditation', 'Architecture & engineering', 'Merit scholarships 25–100%'],
+        fees: 'AED 88,000–110,000/year (₹22L–28L) before scholarships',
+      },
+      {
+        rank: 'UK degree, UAE location',
+        name: 'Heriot-Watt University Dubai',
+        location: 'Dubai International Academic City',
+        description: "A full branch campus of Heriot-Watt University, one of the UK's strongest institutions for engineering and business. Graduates receive the same Heriot-Watt degree as students studying in Edinburgh — recognised by UK employers and globally — at roughly 40% lower cost than the Edinburgh campus. Popular with Indian students targeting engineering, data science, and MBA programs who want a UK-recognised degree with the lifestyle and proximity advantages of Dubai. Partial merit scholarships of 10–30% are commonly available.",
+        tags: ['UK degree recognised globally', 'Engineering & MBA', '40% cheaper than Edinburgh'],
+        fees: 'AED 55,000–90,000/year (₹14L–23L)',
+      },
+      {
+        rank: 'Familiar Indian brand',
+        name: 'BITS Pilani Dubai',
+        location: 'Dubai International Academic City',
+        description: "A campus of BITS Pilani — one of the most respected engineering institutions in India — awarding the same BITS degree as the campuses in Pilani, Goa, and Hyderabad. For Indian families and employers, the BITS brand carries immediate recognition that most UAE branch campuses simply do not. Strong in computer science, electronics, and mechanical engineering. The fees are comparable to other private UAE institutions, and the degree's recognition with Indian employers is a genuine differentiator.",
+        tags: ['BITS Pilani degree — Indian recognition', 'Engineering & CS', 'Dubai location'],
+        fees: 'AED 60,000–85,000/year (₹15L–22L)',
+      },
+    ],
+    costsIntro: 'The UAE sits in a cost bracket that surprises many Indian students — more affordable than the UK or Australia, but more expensive than South Korea or Germany. The key variable is which city and which type of university. One factor that changes the true cost significantly is the zero income tax — a student working part-time keeps every dirham earned. When comparing the real cost of studying in the UAE versus the UK or Australia, post-tax earnings from part-time work close a significant portion of the gap.',
+    costs: [
+      { label: 'Tuition — government universities (UAEU, AUS)', amount: 'AED 40,000–80,000/year (₹10L–20L)', note: 'Khalifa University and MBZUAI are fully funded for most students — the effective cost is zero.' },
+      { label: 'Tuition — international branch campuses', amount: 'AED 55,000–110,000/year (₹14L–28L)', note: 'Merit scholarships of 10–30% commonly available at Heriot-Watt, Middlesex, and University of Birmingham Dubai.' },
+      { label: 'Accommodation — Sharjah (shared flat)', amount: '₹19,000–₹33,000/month', note: 'Sharjah is the most affordable emirate and is within easy metro and bus reach of Dubai universities.' },
+      { label: 'Accommodation — Dubai or Abu Dhabi (shared flat)', amount: '₹30,000–₹60,000/month', note: 'University hostels where available are significantly cheaper (₹16,000–₹27,000). Khalifa and MBZUAI provide on-campus housing as part of their scholarship packages.' },
+      { label: 'Living costs (food, transport, insurance, materials)', amount: '₹20,000–₹35,000/month', note: 'Indian grocery stores are widely available and significantly cheaper than eating out. The Dubai metro and bus system is excellent and affordable. Health insurance is mandatory.' },
+      { label: 'Visa costs (entry permit + medical + Emirates ID + insurance)', amount: 'AED 7,000–8,500 one-time (~₹1.8L–2.2L)', note: 'Paid once on arrival and renewed annually. At Khalifa and MBZUAI, all visa costs are covered by the scholarship.' },
+    ],
+    costCallout: 'Part-time work in 2026: Students on a UAE student visa can work up to 15 hours per week during the semester with a MOHRE Part-Time Work Permit — the employer handles the permit, the student only needs a No Objection Certificate (NOC) from the university. During vacations, the hours limit is lifted. Campus jobs typically pay AED 40–80 per hour — all of it tax-free.',
+    postGradInfo: 'The UAE does not have a formal post-study work visa. After graduation there is a 30-day grace period to transition status — job hunting should begin three to six months before graduation. If an employer makes an offer, they can sponsor an employment visa within 2–3 weeks. For exceptional graduates — GPA 3.75+ from an accredited UAE university, or a degree from a globally top-100 institution — the 10-year Golden Visa provides self-sponsored residency with no employer dependency. No other study destination offers anything comparable.',
+    scholarshipsIntro: "The UAE's scholarship landscape is different from most other countries: at the top government universities, financial support is not competitive in the traditional sense. At MBZUAI, every admitted student is funded automatically. At Khalifa University, the scholarship assessment happens during the admissions review with no separate form required.",
+    scholarships: [
+      {
+        name: 'MBZUAI Full Scholarship — All admitted students',
+        description: 'Every student admitted to a full-time master\'s or PhD program at Mohamed bin Zayed University of AI receives complete financial support automatically — no separate application. The package covers 100% tuition, UAE student visa fees, health insurance, and on-campus housing. Monthly stipend: AED 15,500 (~₹3.9L) for master\'s and AED 17,500 (~₹4.4L) for PhD students — among the highest graduate stipends of any university in the world. Admission threshold: bachelor\'s in CS, engineering, mathematics, or related field with minimum GPA 3.2/4.0 and IELTS 6.5 or equivalent.',
+        coverage: 'Full tuition + AED 15,500–17,500/month + visa + housing',
+      },
+      {
+        name: 'Khalifa University Scholarship',
+        description: "Khalifa University's scholarship for international postgraduate students covers full tuition, a monthly stipend of AED 4,000–20,000 (depending on award level), health insurance, return flights between India and Abu Dhabi, and UAE visa costs. The scholarship is assessed automatically during admission — not through a separate competitive process. Strong candidates in engineering, AI, petroleum, aerospace, and sustainable energy are the primary beneficiaries. Research partnerships with ADNOC, Mubadala, and the UAE Space Agency give scholarship students access to industry projects from the first semester.",
+        coverage: 'Full tuition + AED 4,000–20,000/month + flights + visa',
+      },
+      {
+        name: 'American University of Sharjah Merit Scholarships',
+        description: 'AUS offers merit-based scholarships covering 25% to 100% of tuition fees for high-performing undergraduate and postgraduate students. Typically requires 85%+ in Class 12 for undergraduates and a strong undergraduate GPA for postgraduates. Assessed as part of the admissions process and renewed annually based on academic performance. AUS also offers need-based financial aid through its Financial Assistance Program.',
+        coverage: '25–100% tuition waiver, merit-based',
+      },
+      {
+        name: 'UAEU Graduate Assistantships',
+        description: 'UAE University offers graduate assistantships in most departments combining partial or full tuition coverage with a monthly stipend in exchange for research or teaching assistance. Available to master\'s and PhD students and assigned through the relevant department head. Stipend ranges from AED 2,000 to AED 5,000 per month depending on the department and role. A strong funding pathway into a ranked UAE institution at relatively low cost for research-focused students.',
+        coverage: 'Partial to full tuition + AED 2,000–5,000/month stipend',
+      },
+      {
+        name: 'KHDA Merit Waivers — Dubai private universities',
+        description: 'The Knowledge and Human Development Authority (KHDA), which regulates higher education in Dubai, facilitates merit-based scholarship waivers across all licensed private universities. Most Dubai branch campuses — Heriot-Watt, Middlesex, University of Birmingham Dubai, Manipal — offer merit waivers of 10–40% of tuition for students with strong academic profiles. On fees already 30–40% lower than the home campus in the UK or Australia, a 30% waiver makes the total cost highly competitive.',
+        coverage: '10–40% tuition waiver at participating Dubai universities',
+      },
+    ],
+    visaIntro: 'The UAE student visa is a residence permit — not a single entry stamp — meaning it allows students to live in the UAE for the full duration of their program. The university acts as the sponsor and manages the majority of the process. Here is how it unfolds from the point of receiving an offer.',
+    visaNote: 'Critical — Document attestation: This is the step that catches most Indian students off guard. Academic documents must go through a multi-step attestation chain before being accepted in the UAE: notarisation in India → state education department attestation → MEA Apostille from New Delhi → UAE Embassy attestation in India → MOFA attestation in the UAE (usually handled by the university after arrival). This chain takes 2–4 weeks and costs approximately ₹5,000–10,000 per document. Starting this process immediately after receiving the offer letter is essential.',
+    visaSteps: [
+      { title: 'University offer and initial payment', description: 'Once an offer is confirmed and accepted, the university raises an invoice for the registration fee and an initial tuition deposit — typically 10–25% of the first semester\'s fees (AED 5,000–15,000). Most universities also collect a visa processing fee of AED 1,000–3,000. There is also a Visa Maintenance Charge of AED 2,500 held by many universities for the duration of the program — worth asking about specifically, as it does not always appear in the headline fee schedule.' },
+      { title: 'Document attestation in India', description: 'The full attestation chain for academic certificates must be completed before the visa can be processed. Sequence: notarisation by a public notary → state education department attestation → MEA Apostille from New Delhi → UAE Embassy attestation. This takes 2–4 weeks if started promptly. Courier and government fees across the chain run ₹5,000–10,000 per document. The MOFA attestation in the UAE is typically completed after arrival with university assistance.' },
+      { title: 'Student Entry Permit issued by the university', description: "The university's student affairs office applies to the UAE General Directorate of Residency and Foreigners Affairs (GDRFA) for a Student Entry Permit on the student's behalf. Standard processing takes 14 working days; express processing takes 7–10 working days at additional cost. The Entry Permit is emailed as a digital document and is what allows entry into the UAE — it is not the final residence visa, but the gateway to completing the process on arrival." },
+      { title: 'Arrival and mandatory medical fitness test', description: 'Upon arriving in the UAE, the first required step is a mandatory medical fitness examination at a health authority-approved centre, covering blood tests for communicable diseases. The medical test result is linked directly to the residence visa application and typically takes 1–3 working days. The university\'s student affairs team guides this process.' },
+      { title: 'Emirates ID biometrics and residence visa stamping', description: 'Once the medical test clears, biometric data — fingerprints and a photograph — is collected for the Emirates ID, which is the primary identity document for all UAE residents. The residence visa is then stamped in the passport and the Emirates ID card issued within a few days. From this point, the student is a legal UAE resident and can open a bank account, get a SIM card, sign a lease, and access all government services. The student visa is issued for one year and renewed annually through the university.' },
+      { title: 'Health insurance activation', description: 'Health insurance is mandatory for all UAE residents, including students. Most universities include health insurance in their visa package — it is activated upon residence visa issuance. Coverage typically includes outpatient consultations, emergency care, hospitalisation, and basic dental. The annual cost of ₹15,000–20,000 is usually bundled into the visa fee. Students at Khalifa University and MBZUAI have health insurance fully covered by their scholarship.' },
+    ],
+    visaWarning: {
+      title: 'The Golden Visa — what no other country offers',
+      paragraphs: [
+        'The UAE Golden Visa is a 10-year renewable self-sponsored residence permit that requires no employer and no sponsor. For graduating students, it is available to those who complete a bachelor\'s degree from an accredited UAE university with a cumulative GPA of 3.75 or higher, or from a globally top-100 ranked institution. Master\'s and PhD graduates from top-100 universities also qualify.',
+        'What this means practically: a strong student who graduates from Khalifa University, AUS, or a branch campus of a top-100 UK or Australian university with a good GPA can remain in the UAE for 10 years, work for any employer, sponsor their own family members, and switch jobs without losing residency — all without employer dependency. The UK\'s Graduate Route lasts 2 years. Australia\'s post-study work visa is 2–4 years. The UAE Golden Visa is 10 years, renewable, and self-sponsored.',
+      ],
+    },
+    faqs: [
+      { question: 'Are UAE degrees recognised in India and internationally?', answer: 'It depends on the institution. Degrees from branch campuses — Heriot-Watt Dubai, University of Birmingham Dubai, Middlesex Dubai — carry the same accreditation as the home campus in the UK or Australia. Government university degrees from Khalifa, MBZUAI, and UAEU are recognised by the UAE Ministry of Education and have growing international recognition. BITS Pilani Dubai awards the same degree as the India campuses, with direct Indian employer recognition. The key is to verify that the specific university is licensed by the UAE\'s Commission for Academic Accreditation (CAA) before enrolment.' },
+      { question: 'What happens after graduation — is there a post-study work visa?', answer: 'The UAE does not have a formal post-study work visa. After graduation, the student visa expires and there is a 30-day grace period to transition status — this window is for paperwork, not job hunting, which should begin 3–6 months before graduation. If an employer makes an offer, they can sponsor an employment visa within 2–3 weeks. For exceptional graduates — GPA 3.75+ or a degree from a top-100 global university — the Golden Visa provides 10-year self-sponsored residency without needing an employer at all.' },
+      { question: 'Do I need IELTS to study in the UAE?', answer: 'Most UAE universities require proof of English proficiency. IELTS 6.0–6.5 is the standard threshold; Khalifa University and AUS typically require 6.5 or above. However, students who completed their previous degree entirely in English — which applies to most Indian graduates — may be exempt from the IELTS requirement at many institutions. Each university\'s specific policy varies and is worth confirming directly during the application process.' },
+      { question: 'Can family members accompany a student to the UAE?', answer: 'Yes — and this is one of the UAE\'s most significant advantages over other destinations. Students can sponsor immediate family members (spouse and children) on a dependent visa, subject to meeting a minimum income threshold. This is not possible for most student visa categories in the UK, Canada, or Australia. Spouses can also apply for separate work authorisation, though this is not automatic. For married students, the UAE is effectively the only major study destination where family accompaniment is genuinely straightforward.' },
+      { question: 'How does the cost compare to the UK or Australia?', answer: 'For branch campus degrees (Heriot-Watt, Middlesex, Birmingham), UAE tuition is typically 30–45% lower than the equivalent course at the home campus in the UK or Australia. Add tax-free part-time earnings, lower food and transport costs (particularly if living in Sharjah), and proximity to India that eliminates expensive annual return flights — and the overall cost is significantly lower. For fully-funded students at Khalifa or MBZUAI, the comparison is no contest: the cost is zero, the stipend is generous, and the career pathway into the Gulf and global AI sectors is exceptional.' },
+      { question: 'Is the UAE safe and suitable for students living independently?', answer: 'The UAE is one of the safest countries in the world, with extremely low crime rates and a well-regulated urban environment. Dubai and Abu Dhabi regularly rank among the safest cities globally for expats. For Indian students, the familiarity of the environment — large Indian community, Indian food everywhere, Hindi widely spoken in service settings — means the psychological adjustment period that defines the first semester abroad in Western countries is much shorter here. Female students living independently report strong feelings of safety across all three major emirates.' },
+    ],
+    citiesIntro: 'The UAE is a federation of seven emirates, and the three that matter most for students are Dubai, Abu Dhabi, and Sharjah. Each has a distinct cost profile, culture, and university ecosystem. Many students live in Sharjah — the most affordable — and commute to universities in Dubai.',
+    cities: [
+      { name: 'Dubai', monthlyCost: '₹30,000–₹60,000/month', description: "The UAE's financial, commercial, and cultural hub. Home to the largest concentration of international branch campuses through Dubai International Academic City (DIAC) — including Heriot-Watt, Middlesex, University of Birmingham, BITS Pilani, and many others. Career networking and industry exposure are unmatched in the region. More manageable in areas like Deira, International City, or Al Quoz." },
+      { name: 'Abu Dhabi', monthlyCost: '₹35,000–₹65,000/month', description: "The UAE's capital and home to Khalifa University, MBZUAI, and UAEU (in Al Ain). Quieter and more conservative than Dubai, but its industry connections to ADNOC, Mubadala, Masdar, and the UAE government are extraordinary. For funded students at Khalifa or MBZUAI, living costs are largely covered by the scholarship stipend. The Indian community here is large and well-established." },
+      { name: 'Sharjah', monthlyCost: '₹19,000–₹33,000/month', description: "The most affordable emirate for students and home to the American University of Sharjah. More conservative than Dubai in its regulations but has a large, culturally rich atmosphere with a significant Indian and South Asian population. The metro and bus network connects Sharjah to Dubai's universities in 30–45 minutes, making it the most popular base for students who want Dubai proximity without Dubai prices." },
+    ],
   },
 
   // ─── Slovakia ────────────────────────────────────────────────────────────────

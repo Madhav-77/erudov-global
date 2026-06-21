@@ -7,11 +7,15 @@ import CTA from './components/CTA';
 import Calculators from './components/Calculators';
 import Footer from './components/Footer';
 import RegionDetail from './pages/RegionDetail';
+import ServiceDetail from './pages/ServiceDetail';
+import AboutPage from './pages/AboutPage';
+import BlogsPage from './pages/BlogsPage';
 import ContactModal from './components/ContactModal';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [selectedRegion, setSelectedRegion] = useState('KR');
+  const [selectedService, setSelectedService] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
@@ -19,6 +23,9 @@ function App() {
       setCurrentPage(e.detail.page);
       if (e.detail.region) {
         setSelectedRegion(e.detail.region);
+      }
+      if (e.detail.serviceId) {
+        setSelectedService(e.detail.serviceId);
       }
     };
     const handleOpenModal = () => setIsModalOpen(true);
@@ -38,6 +45,39 @@ function App() {
       <>
         <Header onGetStarted={openModal} />
         <RegionDetail regionCode={selectedRegion} />
+        <Footer />
+        <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      </>
+    );
+  }
+
+  if (currentPage === 'blogs') {
+    return (
+      <>
+        <Header onGetStarted={openModal} />
+        <BlogsPage />
+        <Footer />
+        <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      </>
+    );
+  }
+
+  if (currentPage === 'about') {
+    return (
+      <>
+        <Header onGetStarted={openModal} />
+        <AboutPage />
+        <Footer />
+        <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      </>
+    );
+  }
+
+  if (currentPage === 'service') {
+    return (
+      <>
+        <Header onGetStarted={openModal} />
+        <ServiceDetail serviceId={selectedService} />
         <Footer />
         <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       </>

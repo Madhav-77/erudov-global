@@ -1,10 +1,16 @@
-import { GraduationCap, FileCheck, School, BookOpen, BadgeDollarSign, MapPin } from 'lucide-react';
+import { GraduationCap, FileCheck, School, BookOpen, BadgeDollarSign, MapPin, ArrowRight } from 'lucide-react';
+
+function navigateToService(serviceId: string) {
+  window.dispatchEvent(new CustomEvent('navigate', { detail: { page: 'service', serviceId } }));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
 export default function Services() {
   const services = [
     {
       icon: GraduationCap,
       title: 'Career Counselling',
+      serviceId: 'career-counselling',
       description: 'Personalised guidance to help students identify the right career path aligned with their strengths, interests, and global opportunities.',
       image: 'https://images.pexels.com/photos/5212317/pexels-photo-5212317.jpeg?auto=compress&cs=tinysrgb&w=800',
       color: 'from-brand-navy to-brand-navy-800',
@@ -12,6 +18,7 @@ export default function Services() {
     {
       icon: FileCheck,
       title: 'Visa Assistance',
+      serviceId: 'visa-assistance',
       description: 'End-to-end support for student visa applications — documentation, interview prep, and embassy guidance for every country.',
       image: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800',
       color: 'from-brand-gold to-brand-gold-dark',
@@ -19,6 +26,7 @@ export default function Services() {
     {
       icon: School,
       title: 'University Selection',
+      serviceId: 'university-selection',
       description: 'Expert shortlisting of universities that match your academic profile, budget, and career goals across 10 global destinations.',
       image: 'https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=800',
       color: 'from-brand-navy to-brand-gold',
@@ -26,6 +34,7 @@ export default function Services() {
     {
       icon: BookOpen,
       title: 'Course Selection',
+      serviceId: 'course-selection',
       description: 'In-depth advice on choosing the right programme, specialisation, and intake to maximise your career prospects abroad.',
       image: 'https://images.pexels.com/photos/3182759/pexels-photo-3182759.jpeg?auto=compress&cs=tinysrgb&w=800',
       color: 'from-brand-gold to-brand-navy',
@@ -33,6 +42,7 @@ export default function Services() {
     {
       icon: BadgeDollarSign,
       title: 'Education Loan Support',
+      serviceId: 'education-loan-support',
       description: 'Guidance on securing education loans, scholarships, and financial aid options so funding never stands between your dream.',
       image: 'https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg?auto=compress&cs=tinysrgb&w=800',
       color: 'from-brand-navy to-brand-gold-dark',
@@ -40,6 +50,7 @@ export default function Services() {
     {
       icon: MapPin,
       title: 'Pre-Departure Orientation',
+      serviceId: 'pre-departure-orientation',
       description: 'Comprehensive briefings on accommodation, banking, culture, and campus life so you arrive confident and fully prepared.',
       image: 'https://images.pexels.com/photos/4491461/pexels-photo-4491461.jpeg?auto=compress&cs=tinysrgb&w=800',
       color: 'from-brand-gold-dark to-brand-navy',
@@ -66,27 +77,34 @@ export default function Services() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <div
+            <button
               key={index}
-              className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300"
+              onClick={() => navigateToService(service.serviceId)}
+              className="group flex flex-col overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 text-left cursor-pointer bg-white"
             >
-              <div className="relative h-64 overflow-hidden">
+              {/* Image with floating icon */}
+              <div className="relative h-48 overflow-hidden flex-shrink-0">
                 <img
                   src={service.image}
                   alt={service.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/50 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 to-transparent" />
+                <div className={`absolute top-4 left-4 inline-flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br ${service.color} shadow-lg`}>
+                  <service.icon className="w-5 h-5 text-white" />
+                </div>
               </div>
 
-              <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${service.color} mb-4`}>
-                  <service.icon className="w-6 h-6 text-white" />
+              {/* Text content */}
+              <div className="flex flex-col flex-1 p-6 bg-brand-navy text-white">
+                <h3 className="text-xl font-bold mb-2">{service.title}</h3>
+                <p className="text-white/75 text-sm leading-relaxed flex-1">{service.description}</p>
+                <div className="flex items-center gap-1.5 mt-5 text-brand-gold text-sm font-semibold">
+                  <span>Learn more</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
                 </div>
-                <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
-                <p className="text-brand-light leading-relaxed">{service.description}</p>
               </div>
-            </div>
+            </button>
           ))}
         </div>
       </div>

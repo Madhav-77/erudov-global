@@ -41,9 +41,18 @@ export default function Header({ onGetStarted }: Props) {
             <a href="#services" className="text-brand-dark hover:text-brand-navy transition-colors font-semibold">
               Services
             </a>
-            <a href="#about" className="text-brand-dark hover:text-brand-navy transition-colors font-semibold">
+            <button
+              onClick={() => window.dispatchEvent(new CustomEvent('navigate', { detail: { page: 'about' } }))}
+              className="text-brand-dark hover:text-brand-navy transition-colors font-semibold"
+            >
               About
-            </a>
+            </button>
+            <button
+              onClick={() => window.dispatchEvent(new CustomEvent('navigate', { detail: { page: 'blogs' } }))}
+              className="text-brand-dark hover:text-brand-navy transition-colors font-semibold"
+            >
+              Blog
+            </button>
             <a href="#contact" className="text-brand-dark hover:text-brand-navy transition-colors font-semibold">
               Contact
             </a>
@@ -119,9 +128,18 @@ export default function Header({ onGetStarted }: Props) {
             <a href="#services" className="block px-4 py-2 text-brand-dark hover:bg-brand-cream rounded-lg transition-colors font-semibold">
               Services
             </a>
-            <a href="#about" className="block px-4 py-2 text-brand-dark hover:bg-brand-cream rounded-lg transition-colors font-semibold">
+            <button
+              onClick={() => { setIsMenuOpen(false); window.dispatchEvent(new CustomEvent('navigate', { detail: { page: 'about' } })); }}
+              className="block w-full text-left px-4 py-2 text-brand-dark hover:bg-brand-cream rounded-lg transition-colors font-semibold"
+            >
               About
-            </a>
+            </button>
+            <button
+              onClick={() => { setIsMenuOpen(false); window.dispatchEvent(new CustomEvent('navigate', { detail: { page: 'blogs' } })); }}
+              className="block w-full text-left px-4 py-2 text-brand-dark hover:bg-brand-cream rounded-lg transition-colors font-semibold"
+            >
+              Blog
+            </button>
             <a href="#contact" className="block px-4 py-2 text-brand-dark hover:bg-brand-cream rounded-lg transition-colors font-semibold">
               Contact
             </a>

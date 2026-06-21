@@ -15,14 +15,15 @@ export default function Hero({ onGetStarted }: Props) {
             </div>
 
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-brand-navy leading-tight">
-              Find Your Perfect
+              Study Abroad
               <span className="block mt-2 bg-gradient-to-r from-brand-navy to-brand-gold bg-clip-text text-transparent">
-                Career Path
+                with Confidence
               </span>
             </h1>
 
             <p className="text-xl text-brand-gray leading-relaxed max-w-xl">
-              Expert guidance to help you discover your strengths, explore global career options, and make informed decisions about your international future.
+            Applying to a popular study destination or exploring unique global opportunities? <br/>
+            Our team will guide you through every step of the process.
             </p>
 
             <p className="text-sm font-semibold tracking-widest text-brand-gold uppercase">
@@ -34,7 +35,7 @@ export default function Hero({ onGetStarted }: Props) {
                 onClick={onGetStarted}
                 className="group px-8 py-4 bg-gradient-to-r from-brand-navy to-brand-gold text-white rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-200 font-semibold flex items-center justify-center space-x-2"
               >
-                <span>Start Your Journey</span>
+                <span>Book a Free Consultation</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
@@ -43,9 +44,9 @@ export default function Hero({ onGetStarted }: Props) {
           <div className="relative">
             <div className="relative z-10">
               <img
-                src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Career counselling session"
-                className="rounded-2xl shadow-2xl w-full"
+                src="https://images.pexels.com/photos/1454360/pexels-photo-1454360.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Student studying abroad"
+                className="rounded-2xl shadow-2xl w-full object-cover"
               />
             </div>
             <div className="absolute -bottom-6 -left-6 w-72 h-72 bg-gradient-to-br from-brand-navy to-brand-gold rounded-2xl opacity-15 blur-3xl"></div>

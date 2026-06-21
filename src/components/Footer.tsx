@@ -28,11 +28,24 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-bold text-lg mb-6">Quick Links</h3>
             <ul className="space-y-3">
-              <li><a href="#" className="hover:text-brand-gold transition-colors">About Us</a></li>
+              <li>
+                <button
+                  onClick={() => { window.dispatchEvent(new CustomEvent('navigate', { detail: { page: 'about' } })); window.scrollTo({ top: 0 }); }}
+                  className="hover:text-brand-gold transition-colors text-left"
+                >
+                  About Us
+                </button>
+              </li>
               <li><a href="#services" className="hover:text-brand-gold transition-colors">Our Services</a></li>
               <li><a href="#" className="hover:text-brand-gold transition-colors">Success Stories</a></li>
-              <li><a href="#" className="hover:text-brand-gold transition-colors">Career Resources</a></li>
-              <li><a href="#" className="hover:text-brand-gold transition-colors">Blog</a></li>
+              <li>
+                <button
+                  onClick={() => { window.dispatchEvent(new CustomEvent('navigate', { detail: { page: 'blogs' } })); window.scrollTo({ top: 0 }); }}
+                  className="hover:text-brand-gold transition-colors text-left"
+                >
+                  Blog
+                </button>
+              </li>
             </ul>
           </div>
 
@@ -40,24 +53,35 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-bold text-lg mb-6">Services</h3>
             <ul className="space-y-3">
-              <li><a href="#services" className="hover:text-brand-gold transition-colors">Career Counselling</a></li>
-              <li><a href="#services" className="hover:text-brand-gold transition-colors">Visa Assistance</a></li>
-              <li><a href="#services" className="hover:text-brand-gold transition-colors">University Selection</a></li>
-              <li><a href="#services" className="hover:text-brand-gold transition-colors">Course Selection</a></li>
-              <li><a href="#services" className="hover:text-brand-gold transition-colors">Education Loan Support</a></li>
-              <li><a href="#services" className="hover:text-brand-gold transition-colors">Pre-Departure Orientation</a></li>
+              {[
+                { label: 'Career Counselling',        id: 'career-counselling' },
+                { label: 'Visa Assistance',            id: 'visa-assistance' },
+                { label: 'University Selection',       id: 'university-selection' },
+                { label: 'Course Selection',           id: 'course-selection' },
+                { label: 'Education Loan Support',     id: 'education-loan-support' },
+                { label: 'Pre-Departure Orientation',  id: 'pre-departure-orientation' },
+              ].map(({ label, id }) => (
+                <li key={id}>
+                  <button
+                    onClick={() => { window.dispatchEvent(new CustomEvent('navigate', { detail: { page: 'service', serviceId: id } })); window.scrollTo({ top: 0 }); }}
+                    className="hover:text-brand-gold transition-colors text-left"
+                  >
+                    {label}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Countries */}
           <div>
             <h3 className="text-white font-bold text-lg mb-6">Countries</h3>
-            <ul className="space-y-3">
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-3">
               {REGIONS.map((region) => (
                 <li key={region.code}>
                   <button
                     onClick={() => window.dispatchEvent(new CustomEvent('navigate', { detail: { page: 'region', region: region.code } }))}
-                    className="flex items-center space-x-2 hover:text-brand-gold transition-colors text-left"
+                    className="flex items-center space-x-1.5 hover:text-brand-gold transition-colors text-left text-sm"
                   >
                     <span>{region.flag}</span>
                     <span>{region.name}</span>
