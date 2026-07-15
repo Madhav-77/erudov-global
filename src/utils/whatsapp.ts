@@ -11,7 +11,7 @@
  * @param overrideMessage Optional per-call message that takes precedence over the env default.
  */
 export function whatsappUrl(overrideMessage?: string): string {
-  const number = import.meta.env.VITE_WHATSAPP_NUMBER ?? '919876543210';
+  const number = import.meta.env.VITE_WHATSAPP_NUMBER ?? '919988838388';
   const message =
     overrideMessage ??
     import.meta.env.VITE_WHATSAPP_MESSAGE ??
