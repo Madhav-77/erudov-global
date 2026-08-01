@@ -1,8 +1,8 @@
 import { ArrowRight } from 'lucide-react';
 
-interface Props { onGetStarted: () => void; }
+const openModal = () => window.dispatchEvent(new CustomEvent('openContactModal'));
 
-export default function Hero({ onGetStarted }: Props) {
+export default function Hero() {
   return (
     <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-brand-cream via-white to-brand-gold/5">
       <div className="max-w-7xl mx-auto">
@@ -32,7 +32,7 @@ export default function Hero({ onGetStarted }: Props) {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <button
-                onClick={onGetStarted}
+                onClick={openModal}
                 className="group px-8 py-4 bg-gradient-to-r from-brand-navy to-brand-gold text-white rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-200 font-semibold flex items-center justify-center space-x-2"
               >
                 <span>Book a Free Consultation</span>
@@ -45,8 +45,11 @@ export default function Hero({ onGetStarted }: Props) {
             <div className="relative z-10">
               <img
                 src="https://images.pexels.com/photos/1454360/pexels-photo-1454360.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Student studying abroad"
+                alt="International student reading at a university campus"
+                width="800"
+                height="600"
                 className="rounded-2xl shadow-2xl w-full object-cover"
+                fetchPriority="high"
               />
             </div>
             <div className="absolute -bottom-6 -left-6 w-72 h-72 bg-gradient-to-br from-brand-navy to-brand-gold rounded-2xl opacity-15 blur-3xl"></div>

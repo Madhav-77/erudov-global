@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import {
   ChevronLeft,
   ChevronDown,
@@ -97,12 +99,19 @@ const PILLARS = [
 // ─── Main component ───────────────────────────────────────────────────────────
 
 export default function AboutPage() {
-  const goHome = () => {
-    window.dispatchEvent(new CustomEvent('navigate', { detail: { page: 'home' } }));
-    window.scrollTo({ top: 0 });
-  };
+  const navigate = useNavigate();
+  const goHome = () => navigate('/');
 
   return (
+    <>
+      <Helmet>
+        <title>About Us — Erudov Global</title>
+        <meta name="description" content="Learn about Erudov Global — who we are, our mission, and how we help Indian students navigate international university admissions." />
+        <meta property="og:title" content="About Us — Erudov Global" />
+        <meta property="og:description" content="Learn about Erudov Global — who we are, our mission, and how we help Indian students navigate international university admissions." />
+        <meta property="og:url" content="https://www.erudov.com/about" />
+        <link rel="canonical" href="https://www.erudov.com/about" />
+      </Helmet>
     <div className="min-h-screen bg-white">
 
       {/* ── Hero ────────────────────────────────────────────────────────────── */}
@@ -155,7 +164,7 @@ export default function AboutPage() {
       <section className="border-b border-brand-light bg-white sticky top-16 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center space-x-3 py-4 text-sm font-semibold text-brand-gray overflow-x-auto whitespace-nowrap">
-            <button onClick={goHome} className="hover:text-brand-navy transition-colors">Home</button>
+            <Link to="/" className="hover:text-brand-navy transition-colors">Home</Link>
             <span className="text-brand-light text-lg">›</span>
             <span className="text-brand-gold">About Erudov</span>
           </div>
@@ -212,10 +221,7 @@ export default function AboutPage() {
             {REGIONS.map((region) => (
               <button
                 key={region.code}
-                onClick={() => {
-                  window.dispatchEvent(new CustomEvent('navigate', { detail: { page: 'region', region: region.code } }));
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
+                onClick={() => navigate(`/destinations/${region.code}`)}
                 className="flex items-center gap-2.5 px-4 py-3 bg-white border border-brand-light rounded-xl hover:border-brand-gold hover:bg-brand-cream transition-all text-sm font-medium text-brand-dark group"
               >
                 <span className="text-xl">{region.flag}</span>
@@ -335,5 +341,6 @@ export default function AboutPage() {
 
       </div>
     </div>
+    </>
   );
 }

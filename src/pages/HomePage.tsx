@@ -1,0 +1,52 @@
+import { Helmet } from 'react-helmet-async';
+import Hero from '../components/Hero';
+import Stats from '../components/Stats';
+import Services from '../components/Services';
+import Calculators from '../components/Calculators';
+import CTA from '../components/CTA';
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Erudov Global',
+  url: 'https://www.erudov.com',
+  logo: 'https://www.erudov.com/assets/logo-with-background.svg',
+  description:
+    'Expert guidance for Indian students applying to international universities across 11 destinations — admissions, visa, scholarships and more.',
+  contactPoint: {
+    '@type': 'ContactPoint',
+    email: 'erudovint@gmail.com',
+    contactType: 'customer service',
+    availableLanguage: ['English', 'Hindi'],
+  },
+  areaServed: 'IN',
+  sameAs: [],
+};
+
+export default function HomePage() {
+  return (
+    <>
+      <Helmet>
+        <title>Erudov Global — Study Abroad with Confidence</title>
+        <meta
+          name="description"
+          content="Expert guidance for Indian students applying to international universities across 11 destinations — admissions, visa, scholarships and more."
+        />
+        <meta property="og:title" content="Erudov Global — Study Abroad with Confidence" />
+        <meta
+          property="og:description"
+          content="Expert guidance for Indian students applying to international universities across 11 destinations — admissions, visa, scholarships and more."
+        />
+        <meta property="og:url" content="https://www.erudov.com/" />
+        <link rel="canonical" href="https://www.erudov.com/" />
+        <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
+      </Helmet>
+
+      <Hero />
+      <Stats />
+      <Services />
+      <Calculators />
+      <CTA />
+    </>
+  );
+}

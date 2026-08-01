@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import {
   ChevronLeft,
   ChevronDown,
@@ -16,9 +18,6 @@ import {
 import { SERVICES_CONTENT } from '../constants/services';
 import { whatsappUrl } from '../utils/whatsapp';
 
-interface ServiceDetailProps {
-  serviceId: string;
-}
 
 // ─── Service nav config ───────────────────────────────────────────────────────
 
@@ -83,18 +82,13 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 
 // ─── Main component ───────────────────────────────────────────────────────────
 
-export default function ServiceDetail({ serviceId }: ServiceDetailProps) {
+export default function ServiceDetail() {
+  const { serviceId = 'career-counselling' } = useParams<{ serviceId: string }>();
+  const navigate = useNavigate();
   const service = SERVICES_CONTENT[serviceId];
 
-  const goHome = () => {
-    window.dispatchEvent(new CustomEvent('navigate', { detail: { page: 'home' } }));
-    window.scrollTo({ top: 0 });
-  };
-
-  const goToService = (id: string) => {
-    window.dispatchEvent(new CustomEvent('navigate', { detail: { page: 'service', serviceId: id } }));
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const goHome = () => navigate('/');
+  const goToService = (id: string) => navigate(`/services/${id}`);
 
   if (!service) {
     return (
@@ -112,7 +106,18 @@ export default function ServiceDetail({ serviceId }: ServiceDetailProps) {
   const activeNav = SERVICE_NAV.find(s => s.id === serviceId)!;
   const ActiveIcon = activeNav?.Icon ?? GraduationCap;
 
+  const canonicalUrl = `https://www.erudov.com/services/${serviceId}`;
+
   return (
+    <>
+    <Helmet>
+      <title>{service.title} — Erudov Global</title>
+      <meta name="description" content={service.tagline} />
+      <meta property="og:title" content={`${service.title} — Erudov Global`} />
+      <meta property="og:description" content={service.tagline} />
+      <meta property="og:url" content={canonicalUrl} />
+      <link rel="canonical" href={canonicalUrl} />
+    </Helmet>
     <div className="min-h-screen bg-white">
 
       {/* ── Hero ───────────────────────────────────────────────────────────── */}
@@ -240,5 +245,6 @@ export default function ServiceDetail({ serviceId }: ServiceDetailProps) {
 
       </div>
     </div>
+    </>
   );
 }

@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import {
   ChevronLeft,
   Users,
@@ -15,9 +17,6 @@ import {
 import { REGIONS, REGION_DETAILS, REGION_RICH_CONTENT, LIVING_COSTS } from '../constants/regions';
 import { whatsappUrl } from '../utils/whatsapp';
 
-interface RegionDetailProps {
-  regionCode?: string;
-}
 
 // ─── Small helper components ──────────────────────────────────────────────────
 
@@ -84,7 +83,9 @@ function FAQAccordion({ faqs }: { faqs: { question: string; answer: string }[] }
 
 // ─── Main component ───────────────────────────────────────────────────────────
 
-export default function RegionDetail({ regionCode = 'KR' }: RegionDetailProps) {
+export default function RegionDetail() {
+  const { regionCode = 'KR' } = useParams<{ regionCode: string }>();
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('overview');
   const region = REGIONS.find(r => r.code === regionCode);
   const details = REGION_DETAILS[region?.name || 'South Korea'];
@@ -112,14 +113,37 @@ export default function RegionDetail({ regionCode = 'KR' }: RegionDetailProps) {
     career: 'Career',
   };
 
+  const pageTitle = `Study in ${details.name} — Erudov Global`;
+  const pageDesc = rich ? rich.heroTagline : details.description;
+  const canonicalUrl = `https://www.erudov.com/destinations/${regionCode}`;
+
+  const schemaData = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: pageTitle,
+    description: pageDesc,
+    url: canonicalUrl,
+    ...(details.lastReviewed ? { dateModified: details.lastReviewed } : {}),
+  };
+
   return (
+    <>
+    <Helmet>
+      <title>{pageTitle}</title>
+      <meta name="description" content={pageDesc} />
+      <meta property="og:title" content={pageTitle} />
+      <meta property="og:description" content={pageDesc} />
+      <meta property="og:url" content={canonicalUrl} />
+      <link rel="canonical" href={canonicalUrl} />
+      <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
+    </Helmet>
     <div className="min-h-screen bg-white">
 
       {/* Hero */}
       <section className="bg-gradient-to-br from-brand-cream via-white to-brand-gold/5 pt-28 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <button
-            onClick={() => window.dispatchEvent(new CustomEvent('navigate', { detail: { page: 'home' } }))}
+            onClick={() => navigate('/')}
             className="flex items-center space-x-2 text-brand-gray hover:text-brand-navy transition-colors mb-6 font-semibold"
           >
             <ChevronLeft className="w-5 h-5" />
@@ -136,6 +160,11 @@ export default function RegionDetail({ regionCode = 'KR' }: RegionDetailProps) {
               <p className="text-lg text-brand-gray mt-2 max-w-2xl leading-relaxed">
                 {rich ? rich.heroTagline : details.description}
               </p>
+              {details.lastReviewed && (
+                <p className="text-xs text-brand-gray mt-3">
+                  Last reviewed: {new Date(details.lastReviewed).toLocaleDateString('en-IN', { year: 'numeric', month: 'long' })}
+                </p>
+              )}
               {rich && <QuickStatBar stats={rich.quickStats} />}
             </div>
           </div>
@@ -597,5 +626,6 @@ export default function RegionDetail({ regionCode = 'KR' }: RegionDetailProps) {
         </div>
       </section>
     </div>
+    </>
   );
 }

@@ -1,24 +1,30 @@
+import { Link } from 'react-router-dom';
 import { ChevronLeft, BookOpen } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 export default function BlogsPage() {
-  const goHome = () => {
-    window.dispatchEvent(new CustomEvent('navigate', { detail: { page: 'home' } }));
-    window.scrollTo({ top: 0 });
-  };
-
   return (
+    <>
+      <Helmet>
+        <title>Blog — Erudov Global</title>
+        <meta name="description" content="Guides, insights, and practical advice on studying abroad — written for Indian students and their families." />
+        <meta property="og:title" content="Blog — Erudov Global" />
+        <meta property="og:description" content="Guides, insights, and practical advice on studying abroad — written for Indian students and their families." />
+        <meta property="og:url" content="https://www.erudov.com/blog" />
+        <link rel="canonical" href="https://www.erudov.com/blog" />
+      </Helmet>
     <div className="min-h-screen bg-white">
 
       {/* Hero */}
       <section className="bg-gradient-to-br from-brand-cream via-white to-brand-gold/5 pt-28 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <button
-            onClick={goHome}
-            className="flex items-center space-x-2 text-brand-gray hover:text-brand-navy transition-colors mb-6 font-semibold"
+          <Link
+            to="/"
+            className="inline-flex items-center space-x-2 text-brand-gray hover:text-brand-navy transition-colors mb-6 font-semibold"
           >
             <ChevronLeft className="w-5 h-5" />
             <span>Back to Home</span>
-          </button>
+          </Link>
 
           <div className="flex items-start space-x-5">
             <div className="w-16 h-16 rounded-2xl bg-brand-navy flex items-center justify-center flex-shrink-0 mt-1">
@@ -39,7 +45,7 @@ export default function BlogsPage() {
       <section className="border-b border-brand-light bg-white sticky top-16 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center space-x-3 py-4 text-sm font-semibold text-brand-gray">
-            <button onClick={goHome} className="hover:text-brand-navy transition-colors">Home</button>
+            <Link to="/" className="hover:text-brand-navy transition-colors">Home</Link>
             <span className="text-brand-light text-lg">›</span>
             <span className="text-brand-gold">Blog</span>
           </div>
@@ -63,5 +69,6 @@ export default function BlogsPage() {
         </button>
       </div>
     </div>
+    </>
   );
 }

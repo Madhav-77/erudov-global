@@ -6,4 +6,16 @@
   body {
     color: #32383D;
   }
+
+  /* Visible keyboard focus states — accessibility requirement */
+  :focus-visible {
+    outline: 2px solid #C8A84B;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* Remove focus ring for mouse users only */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
 }

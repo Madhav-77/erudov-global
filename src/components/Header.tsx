@@ -1,14 +1,32 @@
 import { Menu, X, MessageCircle, Globe } from 'lucide-react';
 import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { REGIONS } from '../constants/regions';
 import { whatsappUrl } from '../utils/whatsapp';
 
 interface Props { onGetStarted: () => void; }
 
+function scrollToSection(id: string) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
+}
+
 export default function Header({ onGetStarted }: Props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isRegionOpen, setIsRegionOpen] = useState(false);
   const [selectedRegion, setSelectedRegion] = useState('Countries');
+  const navigate = useNavigate();
+
+  const handleSectionLink = (id: string) => {
+    setIsMenuOpen(false);
+    // If already on home, just scroll. Otherwise go home first then scroll.
+    if (window.location.pathname === '/') {
+      scrollToSection(id);
+    } else {
+      navigate('/');
+      setTimeout(() => scrollToSection(id), 150);
+    }
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 bg-brand-logo-bg z-50 border-b border-brand-light">
@@ -16,46 +34,37 @@ export default function Header({ onGetStarted }: Props) {
         <div className="flex justify-between items-center h-16">
 
           {/* Logo */}
-          <button
-            onClick={() => {
-              setIsMenuOpen(false);
-              window.dispatchEvent(new CustomEvent('navigate', { detail: { page: 'home' } }));
-            }}
-            className="flex items-center hover:opacity-85 transition-opacity"
-          >
+          <Link to="/" className="flex items-center hover:opacity-85 transition-opacity">
             <img
               src="/assets/logo-no-background.svg"
               alt="Erudov Global"
               className="h-10 w-auto"
             />
-          </button>
+          </Link>
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center space-x-6">
-            <button
-              onClick={() => window.dispatchEvent(new CustomEvent('navigate', { detail: { page: 'home' } }))}
-              className="text-brand-dark hover:text-brand-navy transition-colors font-semibold"
-            >
+            <Link to="/" className="text-brand-dark hover:text-brand-navy transition-colors font-semibold">
               Home
-            </button>
-            <a href="#services" className="text-brand-dark hover:text-brand-navy transition-colors font-semibold">
+            </Link>
+            <button
+              onClick={() => handleSectionLink('services')}
+              className="text-brand-dark hover:text-brand-navy transition-colors font-semibold"
+            >
               Services
-            </a>
-            <button
-              onClick={() => window.dispatchEvent(new CustomEvent('navigate', { detail: { page: 'about' } }))}
-              className="text-brand-dark hover:text-brand-navy transition-colors font-semibold"
-            >
+            </button>
+            <Link to="/about" className="text-brand-dark hover:text-brand-navy transition-colors font-semibold">
               About
-            </button>
+            </Link>
+            <Link to="/blog" className="text-brand-dark hover:text-brand-navy transition-colors font-semibold">
+              Blog
+            </Link>
             <button
-              onClick={() => window.dispatchEvent(new CustomEvent('navigate', { detail: { page: 'blogs' } }))}
+              onClick={() => handleSectionLink('contact')}
               className="text-brand-dark hover:text-brand-navy transition-colors font-semibold"
             >
-              Blog
-            </button>
-            <a href="#contact" className="text-brand-dark hover:text-brand-navy transition-colors font-semibold">
               Contact
-            </a>
+            </button>
 
             {/* Countries dropdown */}
             <div className="relative">
@@ -74,7 +83,7 @@ export default function Header({ onGetStarted }: Props) {
                       onClick={() => {
                         setSelectedRegion(region.name);
                         setIsRegionOpen(false);
-                        window.dispatchEvent(new CustomEvent('navigate', { detail: { page: 'region', region: region.code } }));
+                        navigate(`/destinations/${region.code}`);
                       }}
                       className="w-full text-left px-4 py-3 text-brand-dark hover:bg-brand-cream hover:text-brand-navy transition-colors font-medium border-b border-brand-light last:border-b-0 flex items-center space-x-2"
                     >
@@ -116,33 +125,39 @@ export default function Header({ onGetStarted }: Props) {
         {/* Mobile menu */}
         {isMenuOpen && (
           <div className="md:hidden py-4 space-y-3 border-t border-brand-light bg-brand-logo-bg">
-            <button
-              onClick={() => {
-                setIsMenuOpen(false);
-                window.dispatchEvent(new CustomEvent('navigate', { detail: { page: 'home' } }));
-              }}
-              className="block w-full text-left px-4 py-2 text-brand-dark hover:bg-brand-cream rounded-lg transition-colors font-semibold"
+            <Link
+              to="/"
+              onClick={() => setIsMenuOpen(false)}
+              className="block px-4 py-2 text-brand-dark hover:bg-brand-cream rounded-lg transition-colors font-semibold"
             >
               Home
-            </button>
-            <a href="#services" className="block px-4 py-2 text-brand-dark hover:bg-brand-cream rounded-lg transition-colors font-semibold">
-              Services
-            </a>
+            </Link>
             <button
-              onClick={() => { setIsMenuOpen(false); window.dispatchEvent(new CustomEvent('navigate', { detail: { page: 'about' } })); }}
+              onClick={() => handleSectionLink('services')}
               className="block w-full text-left px-4 py-2 text-brand-dark hover:bg-brand-cream rounded-lg transition-colors font-semibold"
+            >
+              Services
+            </button>
+            <Link
+              to="/about"
+              onClick={() => setIsMenuOpen(false)}
+              className="block px-4 py-2 text-brand-dark hover:bg-brand-cream rounded-lg transition-colors font-semibold"
             >
               About
-            </button>
-            <button
-              onClick={() => { setIsMenuOpen(false); window.dispatchEvent(new CustomEvent('navigate', { detail: { page: 'blogs' } })); }}
-              className="block w-full text-left px-4 py-2 text-brand-dark hover:bg-brand-cream rounded-lg transition-colors font-semibold"
+            </Link>
+            <Link
+              to="/blog"
+              onClick={() => setIsMenuOpen(false)}
+              className="block px-4 py-2 text-brand-dark hover:bg-brand-cream rounded-lg transition-colors font-semibold"
             >
               Blog
-            </button>
-            <a href="#contact" className="block px-4 py-2 text-brand-dark hover:bg-brand-cream rounded-lg transition-colors font-semibold">
+            </Link>
+            <button
+              onClick={() => handleSectionLink('contact')}
+              className="block w-full text-left px-4 py-2 text-brand-dark hover:bg-brand-cream rounded-lg transition-colors font-semibold"
+            >
               Contact
-            </a>
+            </button>
 
             <div className="px-4 py-2 border-t border-brand-light">
               <p className="text-sm font-semibold text-brand-gray mb-2">Select Region</p>
@@ -153,7 +168,7 @@ export default function Header({ onGetStarted }: Props) {
                     onClick={() => {
                       setSelectedRegion(region.name);
                       setIsMenuOpen(false);
-                      window.dispatchEvent(new CustomEvent('navigate', { detail: { page: 'region', region: region.code } }));
+                      navigate(`/destinations/${region.code}`);
                     }}
                     className="w-full text-left px-3 py-2 text-brand-dark hover:bg-brand-cream hover:text-brand-navy rounded-lg transition-colors font-medium text-sm flex items-center space-x-2"
                   >

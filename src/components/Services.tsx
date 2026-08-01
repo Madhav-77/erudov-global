@@ -1,11 +1,8 @@
 import { GraduationCap, FileCheck, School, BookOpen, BadgeDollarSign, MapPin, ArrowRight } from 'lucide-react';
-
-function navigateToService(serviceId: string) {
-  window.dispatchEvent(new CustomEvent('navigate', { detail: { page: 'service', serviceId } }));
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
+import { useNavigate } from 'react-router-dom';
 
 export default function Services() {
+  const navigate = useNavigate();
   const services = [
     {
       icon: GraduationCap,
@@ -79,14 +76,17 @@ export default function Services() {
           {services.map((service, index) => (
             <button
               key={index}
-              onClick={() => navigateToService(service.serviceId)}
+              onClick={() => navigate(`/services/${service.serviceId}`)}
               className="group flex flex-col overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 text-left cursor-pointer bg-white"
             >
               {/* Image with floating icon */}
               <div className="relative h-48 overflow-hidden flex-shrink-0">
                 <img
                   src={service.image}
-                  alt={service.title}
+                  alt={`${service.title} counselling service`}
+                  width="800"
+                  height="533"
+                  loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 to-transparent" />

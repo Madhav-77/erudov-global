@@ -1,7 +1,10 @@
 import { Mail } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
 import { REGIONS } from '../constants/regions';
 
 export default function Footer() {
+  const navigate = useNavigate();
+
   return (
     <footer className="bg-brand-navy text-brand-light pt-16 pb-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -28,22 +31,15 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-bold text-lg mb-6">Quick Links</h3>
             <ul className="space-y-3">
+              <li><Link to="/" className="hover:text-brand-gold transition-colors">Home</Link></li>
+              <li><Link to="/about" className="hover:text-brand-gold transition-colors">About Us</Link></li>
+              <li><Link to="/blog" className="hover:text-brand-gold transition-colors">Blog</Link></li>
               <li>
                 <button
-                  onClick={() => { window.dispatchEvent(new CustomEvent('navigate', { detail: { page: 'about' } })); window.scrollTo({ top: 0 }); }}
+                  onClick={() => window.dispatchEvent(new CustomEvent('openContactModal'))}
                   className="hover:text-brand-gold transition-colors text-left"
                 >
-                  About Us
-                </button>
-              </li>
-              <li><a href="#services" className="hover:text-brand-gold transition-colors">Our Services</a></li>
-              <li><a href="#" className="hover:text-brand-gold transition-colors">Success Stories</a></li>
-              <li>
-                <button
-                  onClick={() => { window.dispatchEvent(new CustomEvent('navigate', { detail: { page: 'blogs' } })); window.scrollTo({ top: 0 }); }}
-                  className="hover:text-brand-gold transition-colors text-left"
-                >
-                  Blog
+                  Contact
                 </button>
               </li>
             </ul>
@@ -62,12 +58,12 @@ export default function Footer() {
                 { label: 'Pre-Departure Orientation',  id: 'pre-departure-orientation' },
               ].map(({ label, id }) => (
                 <li key={id}>
-                  <button
-                    onClick={() => { window.dispatchEvent(new CustomEvent('navigate', { detail: { page: 'service', serviceId: id } })); window.scrollTo({ top: 0 }); }}
-                    className="hover:text-brand-gold transition-colors text-left"
+                  <Link
+                    to={`/services/${id}`}
+                    className="hover:text-brand-gold transition-colors"
                   >
                     {label}
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -80,7 +76,7 @@ export default function Footer() {
               {REGIONS.map((region) => (
                 <li key={region.code}>
                   <button
-                    onClick={() => window.dispatchEvent(new CustomEvent('navigate', { detail: { page: 'region', region: region.code } }))}
+                    onClick={() => navigate(`/destinations/${region.code}`)}
                     className="flex items-center space-x-1.5 hover:text-brand-gold transition-colors text-left text-sm"
                   >
                     <span>{region.flag}</span>
@@ -108,9 +104,9 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Erudov Global. All rights reserved.
           </p>
           <div className="flex space-x-6 text-sm">
-            <a href="#" className="text-brand-gray hover:text-brand-gold transition-colors">Privacy Policy</a>
-            <a href="#" className="text-brand-gray hover:text-brand-gold transition-colors">Terms of Service</a>
-            <a href="#" className="text-brand-gray hover:text-brand-gold transition-colors">Cookie Policy</a>
+            <Link to="/privacy-policy" className="text-brand-gray hover:text-brand-gold transition-colors">Privacy Policy</Link>
+            <Link to="/terms-of-service" className="text-brand-gray hover:text-brand-gold transition-colors">Terms of Service</Link>
+            <Link to="/cookie-policy" className="text-brand-gray hover:text-brand-gold transition-colors">Cookie Policy</Link>
           </div>
         </div>
       </div>

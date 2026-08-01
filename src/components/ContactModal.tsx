@@ -1,5 +1,6 @@
 import { X, Send, CheckCircle, AlertCircle, Loader2, ChevronDown } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 import { REGIONS } from '../constants/regions';
 
@@ -12,13 +13,19 @@ const SERVICES = [
   'Pre-Departure Orientation',
 ];
 
+const INTAKES = ['January 2025', 'September 2025', 'January 2026', 'September 2026', 'January 2027', 'Not sure yet'];
+const LEVELS = ['Undergraduate (Bachelor\'s)', 'Postgraduate (Master\'s)', 'PhD / Doctoral', 'Diploma / Foundation', 'Not sure yet'];
+
 interface FormData {
   name: string;
   email: string;
   phone: string;
   country: string;
+  intake: string;
+  level: string;
   services: string[];
   message: string;
+  _honey: string; // honeypot — must stay empty
 }
 
 const EMPTY_FORM: FormData = {
@@ -26,8 +33,11 @@ const EMPTY_FORM: FormData = {
   email: '',
   phone: '',
   country: '',
+  intake: '',
+  level: '',
   services: [],
   message: '',
+  _honey: '',
 };
 
 async function submitToSheet(data: FormData) {
@@ -67,7 +77,9 @@ interface Props {
 }
 
 export default function ContactModal({ isOpen, onClose }: Props) {
+  const navigate = useNavigate();
   const [form, setForm] = useState<FormData>(EMPTY_FORM);
+  const [consent, setConsent] = useState(false);
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [isServiceOpen, setIsServiceOpen] = useState(false);
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -99,7 +111,7 @@ export default function ContactModal({ isOpen, onClose }: Props) {
 
   // Reset on open
   useEffect(() => {
-    if (isOpen) { setForm(EMPTY_FORM); setStatus('idle'); }
+    if (isOpen) { setForm(EMPTY_FORM); setConsent(false); setStatus('idle'); }
   }, [isOpen]);
 
   if (!isOpen) return null;
@@ -110,6 +122,9 @@ export default function ContactModal({ isOpen, onClose }: Props) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    // Honeypot check — bots fill hidden fields, humans don't
+    if (form._honey) return;
+    if (!consent) return;
     setStatus('submitting');
     try {
       await Promise.all([sendEmail(form), submitToSheet(form)]);
@@ -162,10 +177,22 @@ export default function ContactModal({ isOpen, onClose }: Props) {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5">
+              {/* Honeypot — hidden from real users, bots fill this */}
+              <input
+                type="text"
+                name="_honey"
+                value={form._honey}
+                onChange={set('_honey')}
+                aria-hidden="true"
+                tabIndex={-1}
+                style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0 }}
+              />
+
               <div className="grid grid-cols-2 gap-4">
                 <div className="col-span-2 sm:col-span-1">
-                  <label className="block text-sm font-semibold text-gray-700 mb-1.5">Full Name <span className="text-red-500">*</span></label>
+                  <label htmlFor="cf-name" className="block text-sm font-semibold text-gray-700 mb-1.5">Full Name <span className="text-red-500">*</span></label>
                   <input
+                    id="cf-name"
                     type="text"
                     required
                     placeholder="John Doe"
@@ -175,8 +202,9 @@ export default function ContactModal({ isOpen, onClose }: Props) {
                   />
                 </div>
                 <div className="col-span-2 sm:col-span-1">
-                  <label className="block text-sm font-semibold text-gray-700 mb-1.5">Phone Number</label>
+                  <label htmlFor="cf-phone" className="block text-sm font-semibold text-gray-700 mb-1.5">Phone Number</label>
                   <input
+                    id="cf-phone"
                     type="tel"
                     placeholder="+91 98765 43210"
                     value={form.phone}
@@ -187,8 +215,9 @@ export default function ContactModal({ isOpen, onClose }: Props) {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1.5">Email Address <span className="text-red-500">*</span></label>
+                <label htmlFor="cf-email" className="block text-sm font-semibold text-gray-700 mb-1.5">Email Address <span className="text-red-500">*</span></label>
                 <input
+                  id="cf-email"
                   type="email"
                   required
                   placeholder="you@example.com"
@@ -200,8 +229,8 @@ export default function ContactModal({ isOpen, onClose }: Props) {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1.5">Country of Interest</label>
-                  <select value={form.country} onChange={set('country')} className={`${inputClass} pr-10 appearance-none`}>
+                  <label htmlFor="cf-country" className="block text-sm font-semibold text-gray-700 mb-1.5">Country of Interest</label>
+                  <select id="cf-country" value={form.country} onChange={set('country')} className={`${inputClass} pr-10 appearance-none`}>
                     <option value="">Select country</option>
                     {REGIONS.map((r) => (
                       <option key={r.code} value={r.name}>{r.flag} {r.name}</option>
@@ -271,9 +300,27 @@ export default function ContactModal({ isOpen, onClose }: Props) {
                 </div>
               </div>
 
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="cf-intake" className="block text-sm font-semibold text-gray-700 mb-1.5">Intended Intake</label>
+                  <select id="cf-intake" value={form.intake} onChange={set('intake')} className={`${inputClass} appearance-none`}>
+                    <option value="">Select intake</option>
+                    {INTAKES.map((i) => <option key={i} value={i}>{i}</option>)}
+                  </select>
+                </div>
+                <div>
+                  <label htmlFor="cf-level" className="block text-sm font-semibold text-gray-700 mb-1.5">Level of Study</label>
+                  <select id="cf-level" value={form.level} onChange={set('level')} className={`${inputClass} appearance-none`}>
+                    <option value="">Select level</option>
+                    {LEVELS.map((l) => <option key={l} value={l}>{l}</option>)}
+                  </select>
+                </div>
+              </div>
+
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1.5">Message (optional)</label>
+                <label htmlFor="cf-message" className="block text-sm font-semibold text-gray-700 mb-1.5">Message (optional)</label>
                 <textarea
+                  id="cf-message"
                   rows={3}
                   placeholder="Tell us about your goals or any specific questions…"
                   value={form.message}
@@ -281,6 +328,27 @@ export default function ContactModal({ isOpen, onClose }: Props) {
                   className={`${inputClass} resize-none`}
                 />
               </div>
+
+              {/* Consent checkbox */}
+              <label className="flex items-start space-x-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={consent}
+                  onChange={(e) => setConsent(e.target.checked)}
+                  className="w-4 h-4 mt-0.5 accent-brand-gold rounded flex-shrink-0"
+                />
+                <span className="text-sm text-gray-600 leading-relaxed">
+                  I agree to Erudov Global collecting and using my information to contact me about study abroad services. View our{' '}
+                  <button
+                    type="button"
+                    onClick={() => { onClose(); navigate('/privacy-policy'); }}
+                    className="text-brand-gold hover:underline font-semibold"
+                  >
+                    Privacy Policy
+                  </button>
+                  . <span className="text-red-500">*</span>
+                </span>
+              </label>
 
               {status === 'error' && (
                 <div className="flex items-center space-x-2 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
@@ -291,7 +359,7 @@ export default function ContactModal({ isOpen, onClose }: Props) {
 
               <button
                 type="submit"
-                disabled={status === 'submitting'}
+                disabled={status === 'submitting' || !consent}
                 className="w-full flex items-center justify-center space-x-2 py-3.5 bg-gradient-to-r from-brand-navy to-brand-gold text-white rounded-xl font-semibold hover:shadow-xl hover:scale-[1.02] transition-all duration-200 disabled:opacity-70 disabled:scale-100 disabled:cursor-not-allowed"
               >
                 {status === 'submitting' ? (

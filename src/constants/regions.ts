@@ -52,7 +52,8 @@ export const REGION_DETAILS: Record<string, RegionDetail> = {
     visaType: 'Student Visa (D-10)',
     applicationDeadline: 'March & September',
     populationOfStudents: '15,000+',
-    counselorsAvailable: 12
+    counselorsAvailable: 12,
+    lastReviewed: '2025-07-01'
   },
   'UK': {
     name: 'UK',
@@ -79,7 +80,8 @@ export const REGION_DETAILS: Record<string, RegionDetail> = {
     visaType: 'Student Visa (Tier 4)',
     applicationDeadline: 'January & September',
     populationOfStudents: '20,000+',
-    counselorsAvailable: 15
+    counselorsAvailable: 15,
+    lastReviewed: '2025-07-01'
   },
   'Germany': {
     name: 'Germany',
@@ -106,7 +108,8 @@ export const REGION_DETAILS: Record<string, RegionDetail> = {
     visaType: 'Student Visa (Schengen)',
     applicationDeadline: 'April & October',
     populationOfStudents: '18,000+',
-    counselorsAvailable: 10
+    counselorsAvailable: 10,
+    lastReviewed: '2025-07-01'
   },
   'France': {
     name: 'France',
@@ -133,7 +136,8 @@ export const REGION_DETAILS: Record<string, RegionDetail> = {
     visaType: 'Student Visa (Schengen)',
     applicationDeadline: 'March & September',
     populationOfStudents: '17,000+',
-    counselorsAvailable: 11
+    counselorsAvailable: 11,
+    lastReviewed: '2025-07-01'
   },
   'Italy': {
     name: 'Italy',
@@ -160,7 +164,8 @@ export const REGION_DETAILS: Record<string, RegionDetail> = {
     visaType: 'Student Visa (Schengen)',
     applicationDeadline: 'April & October',
     populationOfStudents: '13,000+',
-    counselorsAvailable: 9
+    counselorsAvailable: 9,
+    lastReviewed: '2025-07-01'
   },
   'Japan': {
     name: 'Japan',
@@ -187,7 +192,8 @@ export const REGION_DETAILS: Record<string, RegionDetail> = {
     visaType: 'Student Visa (Ryugaku)',
     applicationDeadline: 'May & November',
     populationOfStudents: '16,000+',
-    counselorsAvailable: 13
+    counselorsAvailable: 13,
+    lastReviewed: '2025-07-01'
   },
   'Ireland': {
     name: 'Ireland',
@@ -214,7 +220,8 @@ export const REGION_DETAILS: Record<string, RegionDetail> = {
     visaType: 'Student Visa (Critical Skills)',
     applicationDeadline: 'January & July',
     populationOfStudents: '19,000+',
-    counselorsAvailable: 14
+    counselorsAvailable: 14,
+    lastReviewed: '2025-07-01'
   },
   'Slovakia': {
     name: 'Slovakia',
@@ -241,7 +248,8 @@ export const REGION_DETAILS: Record<string, RegionDetail> = {
     visaType: 'Student Visa (Schengen)',
     applicationDeadline: 'March & September',
     populationOfStudents: '8,000+',
-    counselorsAvailable: 6
+    counselorsAvailable: 6,
+    lastReviewed: '2025-07-01'
   },
   'Singapore': {
     name: 'Singapore',
@@ -268,7 +276,8 @@ export const REGION_DETAILS: Record<string, RegionDetail> = {
     visaType: 'Student Pass',
     applicationDeadline: 'January & August',
     populationOfStudents: '12,000+',
-    counselorsAvailable: 11
+    counselorsAvailable: 11,
+    lastReviewed: '2025-07-01'
   },
   'Hungary': {
     name: 'Hungary',
@@ -295,7 +304,8 @@ export const REGION_DETAILS: Record<string, RegionDetail> = {
     visaType: 'Type D Long-Stay Study Visa',
     applicationDeadline: 'January (Stipendium) & Rolling',
     populationOfStudents: '10,000+',
-    counselorsAvailable: 8
+    counselorsAvailable: 8,
+    lastReviewed: '2025-07-01'
   },
   'UAE': {
     name: 'UAE',
@@ -322,7 +332,8 @@ export const REGION_DETAILS: Record<string, RegionDetail> = {
     visaType: 'UAE Student Residence Visa',
     applicationDeadline: 'Rolling (September & January main intakes)',
     populationOfStudents: '185,000+',
-    counselorsAvailable: 10
+    counselorsAvailable: 10,
+    lastReviewed: '2025-07-01'
   }
 };
 
@@ -342,6 +353,7 @@ export interface RegionDetail {
   applicationDeadline: string;
   populationOfStudents: string;
   counselorsAvailable: number;
+  lastReviewed?: string; // ISO date e.g. '2025-07-01'
 }
 
 // ─── Rich content interfaces ──────────────────────────────────────────────────

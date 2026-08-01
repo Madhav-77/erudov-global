@@ -1,8 +1,8 @@
 import { ArrowRight, Calendar } from 'lucide-react';
 
-interface Props { onGetStarted: () => void; }
+const openModal = () => window.dispatchEvent(new CustomEvent('openContactModal'));
 
-export default function CTA({ onGetStarted }: Props) {
+export default function CTA() {
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-brand-navy to-brand-dark">
       <div className="max-w-4xl mx-auto text-center">
@@ -15,7 +15,7 @@ export default function CTA({ onGetStarted }: Props) {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <button
-            onClick={onGetStarted}
+            onClick={openModal}
             className="group px-8 py-4 bg-brand-gold hover:bg-brand-gold-dark text-white rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-200 font-semibold flex items-center space-x-2"
           >
             <Calendar className="w-5 h-5" />
