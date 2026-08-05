@@ -27,7 +27,7 @@ export default function Hero() {
             </p>
 
             <p className="text-sm font-semibold tracking-widest text-brand-gold uppercase">
-              Admission Simplified · Visa Verified
+              Admission Simplified. Visa Verified.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">

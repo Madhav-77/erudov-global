@@ -1,6 +1,5 @@
 import { Helmet } from 'react-helmet-async';
 import Hero from '../components/Hero';
-import Stats from '../components/Stats';
 import Services from '../components/Services';
 import Calculators from '../components/Calculators';
 import CTA from '../components/CTA';
@@ -15,7 +14,8 @@ const structuredData = {
     'Expert guidance for Indian students applying to international universities across 11 destinations — admissions, visa, scholarships and more.',
   contactPoint: {
     '@type': 'ContactPoint',
-    email: 'erudovint@gmail.com',
+    email: 'info@erudov.com',
+    telephone: '+91-99888-38388',
     contactType: 'customer service',
     availableLanguage: ['English', 'Hindi'],
   },
@@ -43,7 +43,6 @@ export default function HomePage() {
       </Helmet>
 
       <Hero />
-      <Stats />
       <Services />
       <Calculators />
       <CTA />

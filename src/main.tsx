@@ -11,6 +11,7 @@ import ServiceDetail from './pages/ServiceDetail';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
 import CookiePolicyPage from './pages/CookiePolicyPage';
+import ContactPage from './pages/ContactPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 const REGION_CODES = ['KR', 'UK', 'DE', 'FR', 'IT', 'JP', 'IE', 'SK', 'SG', 'HU', 'AE'];
@@ -41,6 +42,7 @@ const routes: RouteRecord[] = [
         element: <ServiceDetail />,
         getStaticPaths: () => SERVICE_IDS.map((s) => `services/${s}`),
       },
+      { path: 'contact', element: <ContactPage /> },
       { path: 'privacy-policy', element: <PrivacyPolicyPage /> },
       { path: 'terms-of-service', element: <TermsOfServicePage /> },
       { path: 'cookie-policy', element: <CookiePolicyPage /> },

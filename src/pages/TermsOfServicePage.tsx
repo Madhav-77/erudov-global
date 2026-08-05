@@ -51,7 +51,7 @@ export default function TermsOfServicePage() {
         </p>
         <p className="text-sm text-brand-gray mt-4">
           For any questions in the meantime, contact us at{' '}
-          <a href="mailto:erudovint@gmail.com" className="text-brand-gold hover:underline">erudovint@gmail.com</a>.
+          <a href="mailto:info@erudov.com" className="text-brand-gold hover:underline">info@erudov.com</a>.
         </p>
       </div>
 

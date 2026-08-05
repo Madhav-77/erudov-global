@@ -59,12 +59,12 @@ export default function Header({ onGetStarted }: Props) {
             <Link to="/blog" className="text-brand-dark hover:text-brand-navy transition-colors font-semibold">
               Blog
             </Link>
-            <button
-              onClick={() => handleSectionLink('contact')}
+            <Link
+              to="/contact"
               className="text-brand-dark hover:text-brand-navy transition-colors font-semibold"
             >
               Contact
-            </button>
+            </Link>
 
             {/* Countries dropdown */}
             <div className="relative">
@@ -152,12 +152,13 @@ export default function Header({ onGetStarted }: Props) {
             >
               Blog
             </Link>
-            <button
-              onClick={() => handleSectionLink('contact')}
-              className="block w-full text-left px-4 py-2 text-brand-dark hover:bg-brand-cream rounded-lg transition-colors font-semibold"
+            <Link
+              to="/contact"
+              onClick={() => setIsMenuOpen(false)}
+              className="block px-4 py-2 text-brand-dark hover:bg-brand-cream rounded-lg transition-colors font-semibold"
             >
               Contact
-            </button>
+            </Link>
 
             <div className="px-4 py-2 border-t border-brand-light">
               <p className="text-sm font-semibold text-brand-gray mb-2">Select Region</p>

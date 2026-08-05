@@ -1,4 +1,4 @@
-import { Mail } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { REGIONS } from '../constants/regions';
 
@@ -23,7 +23,7 @@ export default function Footer() {
               Empowering students to reach global universities with confidence.
             </p>
             <p className="text-xs font-semibold tracking-widest text-brand-gold uppercase">
-              Admission Simplified · Visa Verified
+              Admission Simplified. Visa Verified.
             </p>
           </div>
 
@@ -34,14 +34,7 @@ export default function Footer() {
               <li><Link to="/" className="hover:text-brand-gold transition-colors">Home</Link></li>
               <li><Link to="/about" className="hover:text-brand-gold transition-colors">About Us</Link></li>
               <li><Link to="/blog" className="hover:text-brand-gold transition-colors">Blog</Link></li>
-              <li>
-                <button
-                  onClick={() => window.dispatchEvent(new CustomEvent('openContactModal'))}
-                  className="hover:text-brand-gold transition-colors text-left"
-                >
-                  Contact
-                </button>
-              </li>
+              <li><Link to="/contact" className="hover:text-brand-gold transition-colors">Contact</Link></li>
             </ul>
           </div>
 
@@ -93,7 +86,19 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start space-x-3">
                 <Mail className="w-5 h-5 text-brand-gold flex-shrink-0 mt-0.5" />
-                <span className="text-brand-gray break-all">erudovint@gmail.com</span>
+                <a href="mailto:info@erudov.com" className="text-brand-gray hover:text-brand-gold transition-colors break-all">
+                  info@erudov.com
+                </a>
+              </li>
+              <li className="flex items-start space-x-3">
+                <Phone className="w-5 h-5 text-brand-gold flex-shrink-0 mt-0.5" />
+                <a href="tel:+919988838388" className="text-brand-gray hover:text-brand-gold transition-colors">
+                  +91 99888 38388
+                </a>
+              </li>
+              <li className="flex items-start space-x-3">
+                <MapPin className="w-5 h-5 text-brand-gold flex-shrink-0 mt-0.5" />
+                <span className="text-brand-gray">Pan India</span>
               </li>
             </ul>
           </div>

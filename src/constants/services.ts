@@ -374,7 +374,7 @@ export const SERVICES_CONTENT: Record<string, ServiceContent> = {
     id: 'education-loan-support',
     title: 'Education Loan Support',
     tagline: 'End-to-end loan assistance so funding never stands between you and your degree.',
-    intro: "Financing your international education shouldn't be a barrier to achieving your academic goals. Our Education Loan Support service is designed to make the funding process straightforward by assisting students from the initial evaluation stage through loan documentation and application support. Rather than leaving you to navigate lenders, paperwork, and financial requirements on your own, our team works closely with you to coordinate the process and help move your loan application forward efficiently.",
+    intro: "Financing your international education shouldn't be a barrier to achieving your academic goals. Our Education Loan Support service is designed to make the funding process more manageable by assisting students from the initial evaluation stage through documentation preparation and application support. Rather than navigating complex paperwork and financial requirements alone, our team works closely with you to coordinate the process and help keep your loan application on track alongside your admission timeline.",
     quickStats: [
       { value: 'End-to-end', label: 'Process support' },
       { value: 'Personalised', label: 'Loan evaluation' },
