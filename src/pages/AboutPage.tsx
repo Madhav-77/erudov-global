@@ -221,7 +221,7 @@ export default function AboutPage() {
             {REGIONS.map((region) => (
               <button
                 key={region.code}
-                onClick={() => navigate(`/destinations/${region.code}`)}
+                onClick={() => navigate(`/destinations/${region.slug}`)}
                 className="flex items-center gap-2.5 px-4 py-3 bg-white border border-brand-light rounded-xl hover:border-brand-gold hover:bg-brand-cream transition-all text-sm font-medium text-brand-dark group"
               >
                 <span className="text-xl">{region.flag}</span>

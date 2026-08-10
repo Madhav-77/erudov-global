@@ -69,7 +69,7 @@ export default function Footer() {
               {REGIONS.map((region) => (
                 <li key={region.code}>
                   <button
-                    onClick={() => navigate(`/destinations/${region.code}`)}
+                    onClick={() => navigate(`/destinations/${region.slug}`)}
                     className="flex items-center space-x-1.5 hover:text-brand-gold transition-colors text-left text-sm"
                   >
                     <span>{region.flag}</span>

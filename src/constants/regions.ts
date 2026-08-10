@@ -1,16 +1,19 @@
 export const REGIONS = [
-  { name: 'South Korea', code: 'KR', flag: '🇰🇷' },
-  { name: 'UK', code: 'UK', flag: '🇬🇧' },
-  { name: 'Germany', code: 'DE', flag: '🇩🇪' },
-  { name: 'France', code: 'FR', flag: '🇫🇷' },
-  { name: 'Italy', code: 'IT', flag: '🇮🇹' },
-  { name: 'Japan', code: 'JP', flag: '🇯🇵' },
-  { name: 'Ireland', code: 'IE', flag: '🇮🇪' },
-  { name: 'Slovakia', code: 'SK', flag: '🇸🇰' },
-  { name: 'Singapore', code: 'SG', flag: '🇸🇬' },
-  { name: 'Hungary', code: 'HU', flag: '🇭🇺' },
-  { name: 'UAE', code: 'AE', flag: '🇦🇪' }
+  { name: 'South Korea', code: 'KR', slug: 'south-korea', flag: '🇰🇷' },
+  { name: 'UK',          code: 'UK', slug: 'uk',          flag: '🇬🇧' },
+  { name: 'Germany',     code: 'DE', slug: 'germany',     flag: '🇩🇪' },
+  { name: 'France',      code: 'FR', slug: 'france',      flag: '🇫🇷' },
+  { name: 'Italy',       code: 'IT', slug: 'italy',       flag: '🇮🇹' },
+  { name: 'Japan',       code: 'JP', slug: 'japan',       flag: '🇯🇵' },
+  { name: 'Ireland',     code: 'IE', slug: 'ireland',     flag: '🇮🇪' },
+  { name: 'Slovakia',    code: 'SK', slug: 'slovakia',    flag: '🇸🇰' },
+  { name: 'Singapore',   code: 'SG', slug: 'singapore',   flag: '🇸🇬' },
+  { name: 'Hungary',     code: 'HU', slug: 'hungary',     flag: '🇭🇺' },
+  { name: 'UAE',         code: 'AE', slug: 'uae',         flag: '🇦🇪' },
 ];
+
+/** Single source of truth: country slug → region record. Used by destinations and universities routes. */
+export const REGION_BY_SLUG = Object.fromEntries(REGIONS.map((r) => [r.slug, r]));
 
 export const LIVING_COSTS: Record<string, number> = {
   'South Korea': 1200,

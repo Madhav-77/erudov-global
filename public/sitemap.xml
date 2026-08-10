@@ -7,18 +7,31 @@
   <url><loc>https://www.erudov.com/blog</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.erudov.com/contact</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
-  <!-- Destination pages -->
-  <url><loc>https://www.erudov.com/destinations/KR</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.erudov.com/destinations/UK</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.erudov.com/destinations/DE</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.erudov.com/destinations/FR</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.erudov.com/destinations/IT</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.erudov.com/destinations/JP</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.erudov.com/destinations/IE</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.erudov.com/destinations/SK</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.erudov.com/destinations/SG</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.erudov.com/destinations/HU</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.erudov.com/destinations/AE</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <!-- Destination country guides -->
+  <url><loc>https://www.erudov.com/destinations/south-korea</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.erudov.com/destinations/uk</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.erudov.com/destinations/germany</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.erudov.com/destinations/france</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.erudov.com/destinations/italy</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.erudov.com/destinations/japan</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.erudov.com/destinations/ireland</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.erudov.com/destinations/slovakia</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.erudov.com/destinations/singapore</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.erudov.com/destinations/hungary</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.erudov.com/destinations/uae</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+
+  <!-- University index pages (content pending) -->
+  <url><loc>https://www.erudov.com/universities/south-korea</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.erudov.com/universities/uk</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.erudov.com/universities/germany</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.erudov.com/universities/france</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.erudov.com/universities/italy</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.erudov.com/universities/japan</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.erudov.com/universities/ireland</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.erudov.com/universities/slovakia</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.erudov.com/universities/singapore</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.erudov.com/universities/hungary</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.erudov.com/universities/uae</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
 
   <!-- Service pages -->
   <url><loc>https://www.erudov.com/services/career-counselling</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>

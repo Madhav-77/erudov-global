@@ -83,7 +83,7 @@ export default function Header({ onGetStarted }: Props) {
                       onClick={() => {
                         setSelectedRegion(region.name);
                         setIsRegionOpen(false);
-                        navigate(`/destinations/${region.code}`);
+                        navigate(`/destinations/${region.slug}`);
                       }}
                       className="w-full text-left px-4 py-3 text-brand-dark hover:bg-brand-cream hover:text-brand-navy transition-colors font-medium border-b border-brand-light last:border-b-0 flex items-center space-x-2"
                     >
@@ -169,7 +169,7 @@ export default function Header({ onGetStarted }: Props) {
                     onClick={() => {
                       setSelectedRegion(region.name);
                       setIsMenuOpen(false);
-                      navigate(`/destinations/${region.code}`);
+                      navigate(`/destinations/${region.slug}`);
                     }}
                     className="w-full text-left px-3 py-2 text-brand-dark hover:bg-brand-cream hover:text-brand-navy rounded-lg transition-colors font-medium text-sm flex items-center space-x-2"
                   >

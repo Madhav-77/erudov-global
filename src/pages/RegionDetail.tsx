@@ -14,7 +14,7 @@ import {
   ChevronDown,
   ChevronUp,
 } from 'lucide-react';
-import { REGIONS, REGION_DETAILS, REGION_RICH_CONTENT, LIVING_COSTS } from '../constants/regions';
+import { REGION_BY_SLUG, REGION_DETAILS, REGION_RICH_CONTENT, LIVING_COSTS } from '../constants/regions';
 import { whatsappUrl } from '../utils/whatsapp';
 
 
@@ -84,10 +84,10 @@ function FAQAccordion({ faqs }: { faqs: { question: string; answer: string }[] }
 // ─── Main component ───────────────────────────────────────────────────────────
 
 export default function RegionDetail() {
-  const { regionCode = 'KR' } = useParams<{ regionCode: string }>();
+  const { regionSlug = 'south-korea' } = useParams<{ regionSlug: string }>();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('overview');
-  const region = REGIONS.find(r => r.code === regionCode);
+  const region = REGION_BY_SLUG[regionSlug];
   const details = REGION_DETAILS[region?.name || 'South Korea'];
   const rich = region ? REGION_RICH_CONTENT[region.name] : undefined;
 
@@ -115,7 +115,7 @@ export default function RegionDetail() {
 
   const pageTitle = `Study in ${details.name} — Erudov Global`;
   const pageDesc = rich ? rich.heroTagline : details.description;
-  const canonicalUrl = `https://www.erudov.com/destinations/${regionCode}`;
+  const canonicalUrl = `https://www.erudov.com/destinations/${regionSlug}`;
 
   const schemaData = {
     '@context': 'https://schema.org',
