@@ -6,6 +6,13 @@
 
     <!-- title and meta description are injected per-route by react-helmet-async -->
 
+    <!-- Pre-populate the vite-react-ssg loader data store so the client never
+         fetches the manifest JSON. This app uses no route loaders; all values
+         are null. An empty object produces identical results without a network
+         request, and eliminates the hash-mismatch crash that happens when a
+         CDN serves stale HTML after a redeploy. -->
+    <script>window.__VITE_REACT_SSG_STATIC_LOADER_DATA__ = {}</script>
+
     <!-- Favicons -->
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
