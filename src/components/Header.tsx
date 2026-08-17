@@ -124,7 +124,7 @@ export default function Header({ onGetStarted }: Props) {
 
         {/* Mobile menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 space-y-3 border-t border-brand-light bg-brand-logo-bg">
+          <div className="md:hidden py-4 space-y-3 border-t border-brand-light bg-brand-logo-bg overflow-y-auto max-h-[calc(100svh-4rem)]">
             <Link
               to="/"
               onClick={() => setIsMenuOpen(false)}
