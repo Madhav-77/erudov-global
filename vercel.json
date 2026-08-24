@@ -8,10 +8,13 @@
     { "source": "/destinations/FR", "destination": "/destinations/france",      "permanent": true },
     { "source": "/destinations/IT", "destination": "/destinations/italy",       "permanent": true },
     { "source": "/destinations/IE", "destination": "/destinations/ireland",     "permanent": true },
-    { "source": "/destinations/SK", "destination": "/destinations/slovakia",    "permanent": true },
+    { "source": "/destinations/SK", "destination": "/destinations",             "permanent": true },
     { "source": "/destinations/SG", "destination": "/destinations/singapore",   "permanent": true },
-    { "source": "/destinations/HU", "destination": "/destinations/hungary",     "permanent": true },
-    { "source": "/destinations/AE", "destination": "/destinations/uae",         "permanent": true }
+    { "source": "/destinations/HU", "destination": "/destinations",             "permanent": true },
+    { "source": "/destinations/AE", "destination": "/destinations",             "permanent": true },
+    { "source": "/destinations/slovakia", "destination": "/destinations",       "permanent": true },
+    { "source": "/destinations/hungary",  "destination": "/destinations",       "permanent": true },
+    { "source": "/destinations/uae",      "destination": "/destinations",       "permanent": true }
   ],
   "headers": [
     {

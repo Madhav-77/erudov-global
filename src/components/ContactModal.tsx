@@ -13,10 +13,16 @@ const SERVICES = [
   'Pre-Departure Orientation',
 ];
 
+const ENQUIRY_BY = [
+  ['student', 'Student (18+)'],
+  ['parent', 'Parent or guardian'],
+] as const;
+
 const INTAKES = ['January 2025', 'September 2025', 'January 2026', 'September 2026', 'January 2027', 'Not sure yet'];
 const LEVELS = ['Undergraduate (Bachelor\'s)', 'Postgraduate (Master\'s)', 'PhD / Doctoral', 'Diploma / Foundation', 'Not sure yet'];
 
 interface FormData {
+  enquiryBy: typeof ENQUIRY_BY[number][0] | '';
   name: string;
   email: string;
   phone: string;
@@ -29,6 +35,7 @@ interface FormData {
 }
 
 const EMPTY_FORM: FormData = {
+  enquiryBy: '',
   name: '',
   email: '',
   phone: '',
@@ -47,7 +54,7 @@ async function submitToSheet(data: FormData) {
     method: 'POST',
     mode: 'no-cors',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ ...data, services: data.services.join(', '), submittedAt: new Date().toISOString() }),
+    body: JSON.stringify({ ...data, enquiryBy: data.enquiryBy, services: data.services.join(', '), submittedAt: new Date().toISOString() }),
   });
 }
 
@@ -60,6 +67,7 @@ async function sendEmail(data: FormData) {
     serviceId,
     templateId,
     {
+      enquiry_by: data.enquiryBy,
       from_name: data.name,
       from_email: data.email,
       phone: data.phone,
@@ -187,6 +195,27 @@ export default function ContactModal({ isOpen, onClose }: Props) {
                 tabIndex={-1}
                 style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0 }}
               />
+
+              {/* Who is completing this enquiry? */}
+              <div>
+                <p className="text-sm font-semibold text-gray-700 mb-2">Who is completing this enquiry? <span className="text-red-500">*</span></p>
+                <div className="flex gap-6">
+                  {ENQUIRY_BY.map(([val, label]) => (
+                    <label key={val} className="flex items-center gap-2 cursor-pointer select-none">
+                      <input
+                        type="radio"
+                        name="enquiryBy"
+                        value={val}
+                        required
+                        checked={form.enquiryBy === val}
+                        onChange={() => setForm((f) => ({ ...f, enquiryBy: val }))}
+                        className="w-4 h-4 accent-brand-gold"
+                      />
+                      <span className="text-sm font-medium text-gray-700">{label}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="col-span-2 sm:col-span-1">

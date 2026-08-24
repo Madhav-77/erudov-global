@@ -27,7 +27,7 @@ export const SERVICES_CONTENT: Record<string, ServiceContent> = {
     id: 'career-counselling',
     title: 'Career Counselling',
     tagline: 'Personalised global education planning — built around your goals, not a generic list.',
-    intro: 'Choosing to study abroad is more than selecting a university — it is a long-term career decision. Our career counselling service helps students identify academic pathways that align with their interests, strengths, financial plans, and future ambitions while comparing opportunities across multiple countries. Instead of relying on generic recommendations, we develop evidence-based strategies that consider employability trends, skill demand, higher education quality, and post-study opportunities in destinations such as South Korea, the United Kingdom, Germany, Japan, Hungary, Singapore, France, Ireland, Italy, and Slovakia.',
+    intro: 'Choosing to study abroad is more than selecting a university — it is a long-term career decision. Our career counselling service helps students identify academic pathways that align with their interests, strengths, financial plans, and future ambitions while comparing opportunities across multiple countries. Instead of relying on generic recommendations, we develop evidence-based strategies that consider employability trends, skill demand, higher education quality, and post-study opportunities in destinations such as South Korea, the United Kingdom, Germany, Japan, Singapore, France, Ireland, and Italy.',
     quickStats: [
       { value: '10+', label: 'Destinations compared' },
       { value: '4–6 months', label: 'Ideal head-start' },

@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import ContactModal from './components/ContactModal';
 import CookieBanner from './components/CookieBanner';
+import WhatsAppFAB from './components/WhatsAppFAB';
 
 export default function Layout() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -29,6 +30,7 @@ export default function Layout() {
       <Outlet />
       <Footer />
       <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <WhatsAppFAB />
       <CookieBanner />
     </div>
   );

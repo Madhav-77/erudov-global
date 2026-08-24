@@ -24,7 +24,7 @@ export default function Services() {
       icon: School,
       title: 'University Selection',
       serviceId: 'university-selection',
-      description: 'Expert shortlisting of universities that match your academic profile, budget, and career goals across 11 destinations.',
+      description: 'Expert shortlisting of universities that match your academic profile, budget, and career goals across 8 destinations.',
       image: 'https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=800',
       color: 'from-brand-navy to-brand-gold',
     },
