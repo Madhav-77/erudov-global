@@ -8,13 +8,13 @@
     { "source": "/destinations/FR", "destination": "/destinations/france",      "permanent": true },
     { "source": "/destinations/IT", "destination": "/destinations/italy",       "permanent": true },
     { "source": "/destinations/IE", "destination": "/destinations/ireland",     "permanent": true },
-    { "source": "/destinations/SK", "destination": "/destinations",             "permanent": true },
+    { "source": "/destinations/SK", "destination": "/",                         "permanent": true },
     { "source": "/destinations/SG", "destination": "/destinations/singapore",   "permanent": true },
-    { "source": "/destinations/HU", "destination": "/destinations",             "permanent": true },
-    { "source": "/destinations/AE", "destination": "/destinations",             "permanent": true },
-    { "source": "/destinations/slovakia", "destination": "/destinations",       "permanent": true },
-    { "source": "/destinations/hungary",  "destination": "/destinations",       "permanent": true },
-    { "source": "/destinations/uae",      "destination": "/destinations",       "permanent": true }
+    { "source": "/destinations/HU", "destination": "/",                         "permanent": true },
+    { "source": "/destinations/AE", "destination": "/",                         "permanent": true },
+    { "source": "/destinations/slovakia", "destination": "/",                   "permanent": true },
+    { "source": "/destinations/hungary",  "destination": "/",                   "permanent": true },
+    { "source": "/destinations/uae",      "destination": "/",                   "permanent": true }
   ],
   "headers": [
     {
@@ -39,7 +39,7 @@
         { "key": "Referrer-Policy",           "value": "strict-origin-when-cross-origin" },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://api.emailjs.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://images.pexels.com https://www.erudov.com; font-src 'self'; connect-src 'self' https://api.emailjs.com https://script.google.com; frame-ancestors 'none';"
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://api.emailjs.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://images.pexels.com https://www.erudov.com; font-src 'self'; connect-src 'self' https://api.emailjs.com https://open.er-api.com; frame-ancestors 'none';"
         }
       ]
     }
