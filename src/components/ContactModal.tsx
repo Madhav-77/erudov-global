@@ -48,14 +48,26 @@ const EMPTY_FORM: FormData = {
 };
 
 async function submitToSheet(data: FormData) {
-  const url = import.meta.env.VITE_SHEETS_WEBHOOK_URL;
-  if (!url || url.includes('YOUR_DEPLOYMENT_ID')) return;
-  await fetch(url, {
+  const res = await fetch('/api/lead', {
     method: 'POST',
-    mode: 'no-cors',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ ...data, enquiryBy: data.enquiryBy, services: data.services.join(', '), submittedAt: new Date().toISOString() }),
+    body: JSON.stringify({
+      type: 'consultation',
+      enquiryBy: data.enquiryBy,
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      country: data.country,
+      intake: data.intake,
+      level: data.level,
+      services: data.services.join(', '),
+      message: data.message,
+      _honey: data._honey,
+    }),
   });
+  // 404 = endpoint not deployed (e.g. `npm run dev` without `vercel dev`) — skip silently.
+  if (res.status === 404) return;
+  if (!res.ok) throw new Error(`lead submission failed (${res.status})`);
 }
 
 async function sendEmail(data: FormData) {
@@ -67,12 +79,15 @@ async function sendEmail(data: FormData) {
     serviceId,
     templateId,
     {
+      // Keep this payload's keys in sync with ContactPage.tsx so a single
+      // EmailJS template renders every placeholder for both forms.
       enquiry_by: data.enquiryBy,
       from_name: data.name,
       from_email: data.email,
       phone: data.phone,
       country: data.country,
       service: data.services.join(', '),
+      subject: 'Free Consultation Request',
       message: data.message,
     },
     publicKey,
@@ -135,8 +150,11 @@ export default function ContactModal({ isOpen, onClose }: Props) {
     if (!consent) return;
     setStatus('submitting');
     try {
-      await Promise.all([sendEmail(form), submitToSheet(form)]);
+      // Email is the primary channel — only its failure blocks the user.
+      await sendEmail(form);
       setStatus('success');
+      // Spreadsheet log is best-effort; never let it fail the submission.
+      submitToSheet(form).catch((err) => console.error('sheet log failed', err));
     } catch {
       setStatus('error');
     }

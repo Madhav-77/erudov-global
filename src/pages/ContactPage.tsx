@@ -37,10 +37,15 @@ async function sendHelpEmail(data: HelpForm) {
     serviceId,
     templateId,
     {
+      // Keep this payload's keys in sync with ContactModal.tsx so a single
+      // EmailJS template renders every placeholder for both forms.
+      enquiry_by: '',
       from_name: data.name,
       from_email: data.email,
       phone: data.phone,
-      subject: data.subject,
+      country: '',
+      service: '',
+      subject: data.subject || 'Help Enquiry',
       message: data.message,
     },
     publicKey,
@@ -48,14 +53,22 @@ async function sendHelpEmail(data: HelpForm) {
 }
 
 async function submitHelpToSheet(data: HelpForm) {
-  const url = import.meta.env.VITE_SHEETS_WEBHOOK_URL;
-  if (!url || url.includes('YOUR_DEPLOYMENT_ID')) return;
-  await fetch(url, {
+  const res = await fetch('/api/lead', {
     method: 'POST',
-    mode: 'no-cors',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ ...data, type: 'help-enquiry', submittedAt: new Date().toISOString() }),
+    body: JSON.stringify({
+      type: 'help-enquiry',
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      subject: data.subject,
+      message: data.message,
+      _honey: data._honey,
+    }),
   });
+  // 404 = endpoint not deployed (e.g. `npm run dev` without `vercel dev`) — skip silently.
+  if (res.status === 404) return;
+  if (!res.ok) throw new Error(`lead submission failed (${res.status})`);
 }
 
 // ─── Main component ───────────────────────────────────────────────────────────
@@ -75,7 +88,10 @@ export default function ContactPage() {
     if (!consent) return;
     setStatus('submitting');
     try {
-      await Promise.all([sendHelpEmail(form), submitHelpToSheet(form)]);
+      // Email is the primary channel — only its failure blocks the user.
+      await sendHelpEmail(form);
+      // Spreadsheet log is best-effort; never let it fail the submission.
+      submitHelpToSheet(form).catch((err) => console.error('sheet log failed', err));
       setStatus('success');
       setForm(EMPTY);
       setConsent(false);
